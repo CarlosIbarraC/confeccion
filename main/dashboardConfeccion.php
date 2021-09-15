@@ -20,6 +20,7 @@
 
 <body>
 <a href="" class="btn-menu ">Menu<i class="icono fa fa-bars"></i></a>
+
 <div class="contenedor-menu col-3">
 
    
@@ -47,9 +48,9 @@
         <li class="total-alto"><a href=""></a></li>
         <li class="fija"><a href=""><i class="icono fas fa-power-off izquierda"></i>salida</a></li>
     </ul>
-
+   
 </div>
-<div class="col-6"><button class="btn btn-success" id="btn-contar">cargar</button></div>
+<div class="contenedor-menu col-8"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/main.js"></script>

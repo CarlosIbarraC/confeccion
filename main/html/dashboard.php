@@ -64,7 +64,7 @@
     </div>
     <div class="padding">
       <div class="row">
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-6 col-sm-3">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-40 rounded  teal-500">
@@ -77,7 +77,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-6 col-sm-3">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-40 rounded  lime-500">
@@ -90,7 +90,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-6 col-sm-3">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-40 rounded red-A400">
@@ -103,7 +103,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-3">
+        <div class="col-6 col-sm-3">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-40 rounded indigo-500">
@@ -119,7 +119,7 @@
       </div>
       <!-- ----------------------------segunda hilera ---------------------- -->
       <div class="row">
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-4 col-sm-2">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-32 rounded  lime-500">
@@ -132,7 +132,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-4 col-sm-2">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-32 rounded  red-A400">
@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-4 col-sm-2">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-32 rounded  indigo-500">
@@ -158,7 +158,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-4 col-sm-2">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-32 rounded  teal-500">
@@ -171,7 +171,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-4 col-sm-2">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-32 rounded indigo-500">
@@ -184,7 +184,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-2">
+        <div class="col-4 col-sm-2">
           <div class="box p-a">
             <div class="pull-left m-r">
               <span class="w-32 rounded teal-500">

@@ -528,10 +528,10 @@
                 <div ui-include="'../views/blocks/dropdown.notification.html'"></div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link p-0 clear" href="#" data-toggle="dropdown">
+                <a class="nav-link p-2 clear" href="#" data-toggle="dropdown">
                   <span class="avatar w-32">
-                    <img src="../assets/images/a0.jpg" alt="...">
-                    <i class="on b-white bottom"></i>
+                    <img src="../assets/images/foto-web.jpg" alt="...">
+                   <!--  <i class="off b-white bottom"></i> -->
                   </span>
                 </a>
                 <div ui-include="'../views/blocks/dropdown.user.html'"></div>

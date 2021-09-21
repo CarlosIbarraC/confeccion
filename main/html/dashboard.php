@@ -312,22 +312,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-3 col-sm-6">
-              <div class="box p-a">
-                <div class="clear">
-                  <h4 class="m-0 text-xs _300"><a href>Tallas<br><span class="text-xs">Prenda</span></a></h4>
-                  <small class="text-muted">3:50 min</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-3 col-sm-6">
-              <div class="box p-a">
-                <div class="clear">
-                  <h4 class="m-0 text-xs _300"><a href>Tallas<br><span class="text-xs">Prenda</span></a></h4>
-                  <small class="text-muted">3:50 min</small>
-                </div>
-              </div>
-            </div>
+            
+            
             <div class="col-3 col-sm-6">
               <div class="box p-a">
                 <div class="clear">

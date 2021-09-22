@@ -317,7 +317,7 @@
                   </a>
                   <ul class="nav-sub">
                     <li>
-                      <a href="form.layout.html" >
+                      <a href="formulario.php" >
                         <span class="nav-text">Form Layout</span>
                       </a>
                     </li>

@@ -39,9 +39,19 @@
                 <div class="col-md-6">
                     <div class="box">
                         <div class="box-header">
-                            <h2>Formulario para O.P.</h2>
-                            
+                            <div class="row">
+                                <div class="col-11">
+                                    <h2>Formulario para O.P.</h2>
+                                </div>
+                                <div class="col-1">
+                                    <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3 ">
+                                                  <i class="material-icons ">&#xe5d2;</i>
+                                                </a>
+                                </div>
+                            </div>
                         </div>
+                       
+          
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
                             <form role="form">
@@ -53,18 +63,18 @@
                                             placeholder="Enter email">
                                     </div>
                                     <div class="form-group col-4 ">
-                                            <label for="exampleInputEmail1">ID</label>
-                                            <input type="number" class="form-control " id="exampleInputEmail1"
-                                                placeholder="Read Only">
-                                        </div>
+                                        <label for="exampleInputEmail1">ID</label>
+                                        <input type="number" class="form-control " id="exampleInputEmail1"
+                                            placeholder="Read Only">
+                                    </div>
                                 </div>
                                 <div class="row box-body">
-                                    <div class="form-group col-4 p-0">
+                                    <div class="form-group col-3 p-0">
                                         <label for="exampleInputEmail1">Hora Entrada</label>
                                         <input type="time" class="form-control" id="exampleInputEmail1"
                                             placeholder="Enter email">
                                     </div>
-                                    <div class="form-group col-4 p-0">
+                                    <div class="form-group col-3 p-0">
                                         <label for="exampleInputEmail1">Hora Salida</label>
                                         <input type="time" class="form-control " id="exampleInputEmail1"
                                             placeholder="Enter email">
@@ -76,22 +86,29 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group ">
+                                <div class="form-group box-body mr-5 ml-0">
+
                                     <label for="exampleInputFile">Subir archivo grafico</label>
                                     <input type="file" id="exampleInputFile" class="form-control">
-                                    
+
+
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-4 p-0">
-                                            <label for="exampleInputEmail1">S.A.M.</label>
-                                            <input type="number" step="0.1" class="form-control " id="exampleInputEmail1"
-                                                placeholder="use ,">
-                                        </div>
-                                        <div class="form-group col-3 p-0 ml-3">
-                                            <label for="exampleInputPassword1">Expertos</label>
-                                            <input type="number" min="1" max="90" step="1" class="form-control" iD="descanso"
-                                                placeholder="Minutos">
-                                        </div>
+                                        <label for="exampleInputEmail1">S.A.M.</label>
+                                        <input type="number" step="0.1" class="form-control " id="exampleInputEmail1"
+                                            placeholder="use ,">
+                                    </div>
+                                    <div class="form-group col-3 p-0 ml-3">
+                                        <label for="exampleInputPassword1">Expertos</label>
+                                        <input type="number" min="1" max="90" step="1" class="form-control"
+                                            iD="descanso" placeholder="Minutos">
+                                    </div>
+                                    <div class="form-group col-3 p-0 ml-3">
+                                        <label for="exampleInputPassword1">Cantidad</label>
+                                        <input type="number" min="1" max="90" step="1" class="form-control"
+                                            iD="descanso" placeholder="unidades">
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline b-accent text-accent m-b">Entrada</button>
                             </form>
@@ -102,27 +119,55 @@
                     <div class="box">
                         <div class="box-header">
                             <h2>O.P. creada</h2>
-                            
+
                         </div>
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
                             <form role="form">
-                                <div class="form-group row ">
-                                    <label for="inputEmail3" class="col-sm-2 form-control-label">Fecha</label>
-                                    <div class=" col-sm-10 mt-2 ">
-                                        <p>15/10/2021</p>
+                                <div class="row">
+                                    <div class=" col-sm-4 mt-1 ">
+                                        <label for="inputEmail3" class="col-sm-2 form-control-label ">Fecha: <p
+                                                class="text-success">15/10/2021</p></label>
+
+
                                     </div>
-                                    <div class="row">
-                                        <label for="inputEmail3" class="col-sm-2 form-control-label">Hora Entrada</label>
-                                        <div class=" col-sm-10 mt-2 ">
-                                            <p>15/10/2021</p>
-                                        </div>
-                                        <label for="inputEmail3" class="col-sm-2 form-control-label">Hora Entrada</label>
-                                        <div class=" col-sm-10 mt-2 ">
-                                            <p>15/10/2021</p>
-                                        </div>
+
+                                    <div class=" col-sm-4 mt-1 text-center ">
+                                        <label for="inputEmail3" class=" form-control-label">Hora Entrada:<p
+                                                class="text-success">6:00</p></label>
+
+
+                                    </div>
+                                    <div class=" col-sm-4 mt-1 text-center">
+                                        <label for="inputEmail3" class=" form-control-label">Hora Salida:<p
+                                                class="text-success">15:00</p></label>
+
+
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class=" col-sm-4 mt-1 ">
+                                        <label for="inputEmail3" class="col-sm-2 form-control-label ">S.A.M: <p
+                                                class="text-warning text-md">3:56</p></label>
+
+
+                                    </div>
+
+                                    <div class=" col-sm-4 mt-1 text-center ">
+                                        <label for="inputEmail3" class=" form-control-label">Cantidad:<p
+                                                class="text-success text-md">1236</p></label>
+
+
+                                    </div>
+                                    <div class=" col-sm-4 mt-1 text-center">
+                                        <label for="inputEmail3" class=" form-control-label">Minutos:<p
+                                                class="text-success text-md">450</p></label>
+
+
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group row">
                                     <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
                                     <div class="col-sm-10">
@@ -161,43 +206,43 @@
                         </div>
                     </div>
                 </div>
-                
 
-    </div>
-    <?php 
+
+            </div>
+            <?php 
  require('switchColor.php');
  ?>
-    <!-- ############ LAYOUT END-->
+            <!-- ############ LAYOUT END-->
 
-    </div>
-    <!-- build:js scripts/app.html.js -->
-    <!-- jQuery -->
-    <script src="../libs/jquery/jquery/dist/jquery.js"></script>
-    <!-- Bootstrap -->
-    <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
-    <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- core -->
-    <script src="../libs/jquery/underscore/underscore-min.js"></script>
-    <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-    <script src="../libs/jquery/PACE/pace.min.js"></script>
+        </div>
+        <!-- build:js scripts/app.html.js -->
+        <!-- jQuery -->
+        <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+        <!-- Bootstrap -->
+        <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+        <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- core -->
+        <script src="../libs/jquery/underscore/underscore-min.js"></script>
+        <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+        <script src="../libs/jquery/PACE/pace.min.js"></script>
 
-    <script src="scripts/config.lazyload.js"></script>
+        <script src="scripts/config.lazyload.js"></script>
 
-    <script src="scripts/palette.js"></script>
-    <script src="scripts/ui-load.js"></script>
-    <script src="scripts/ui-jp.js"></script>
-    <script src="scripts/ui-include.js"></script>
-    <script src="scripts/ui-device.js"></script>
-    <script src="scripts/ui-form.js"></script>
-    <script src="scripts/ui-nav.js"></script>
-    <script src="scripts/ui-screenfull.js"></script>
-    <script src="scripts/ui-scroll-to.js"></script>
-    <script src="scripts/ui-toggle-class.js"></script>
+        <script src="scripts/palette.js"></script>
+        <script src="scripts/ui-load.js"></script>
+        <script src="scripts/ui-jp.js"></script>
+        <script src="scripts/ui-include.js"></script>
+        <script src="scripts/ui-device.js"></script>
+        <script src="scripts/ui-form.js"></script>
+        <script src="scripts/ui-nav.js"></script>
+        <script src="scripts/ui-screenfull.js"></script>
+        <script src="scripts/ui-scroll-to.js"></script>
+        <script src="scripts/ui-toggle-class.js"></script>
 
-    <script src="scripts/app.js"></script>
+        <script src="scripts/app.js"></script>
 
-    <!-- ajax -->
-    <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-    <script src="scripts/ajax.js"></script>
-    <!-- endbuild -->
+        <!-- ajax -->
+        <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+        <script src="scripts/ajax.js"></script>
+        <!-- endbuild -->
 </body>

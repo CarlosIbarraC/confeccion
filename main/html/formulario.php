@@ -160,7 +160,7 @@
 
                                     </div>
                                     <div class=" col-sm-4 mt-1 text-center">
-                                        <label for="inputEmail3" class=" form-control-label">Minutos:<p
+                                        <label for="inputEmail3" class=" form-control-label">Minutos EX:<p
                                                 class="text-success text-md">450</p></label>
 
 

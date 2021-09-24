@@ -217,9 +217,15 @@
 
 
                                     </div>
+<<<<<<< HEAD
                                     <div class="col-3  mt-1 text-center ">
                                         <label for="inputEmail3" class=" form-control-label">Expertos:<p
                                                 class="text-success text-md">10</p></label>
+=======
+                                    <div class=" col-sm-4 mt-1 text-center">
+                                        <label for="inputEmail3" class=" form-control-label">Minutos :<p
+                                                class="text-success text-md">450</p></label>
+>>>>>>> e52d37cb8157b950c247f8f8b73b0d2f44c8240b
 
 
                                     </div>
@@ -325,6 +331,7 @@
         <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
         <script src="scripts/ajax.js"></script>
         <!-- endbuild -->
+<<<<<<< HEAD
         <script>
            
 
@@ -340,3 +347,6 @@
             
         </script>
 </body>
+=======
+</body>
+>>>>>>> e52d37cb8157b950c247f8f8b73b0d2f44c8240b

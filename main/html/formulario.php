@@ -242,7 +242,7 @@
                                         <textarea class="form-control" rows="2"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group row box p-a  justify-content-center">
+                                <div class="form-group row box p-a  ">
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
                                         <img src="../assets/images/b0.jpg" class="w-sm">
                                     </div>

@@ -243,7 +243,7 @@
             <div class="input-group">
               <div class="input-group-prepend">
               </div>
-              <textarea class="form-control" aria-label="With textarea"></textarea>
+              <textarea class="form-control" aria-label="With textarea" row="2"></textarea>
             </div>
           </div>
         </div>
@@ -257,7 +257,7 @@
             <div class="input-group">
               <div class="input-group-prepend">
               </div>
-              <textarea class="form-control" aria-label="With textarea"></textarea>
+              <textarea class="form-control" aria-label="With textarea" row="2"></textarea>
             </div>
           </div>
         </div>

@@ -58,25 +58,25 @@
                                 <div class="row box-body">
 
                                     <div class="form-group col-6 p-0">
-                                        <label for="exampleInputEmail1">Fecha</label>
-                                        <input type="date" class="form-control" id="exampleInputEmail1"
+                                        <label for="">Fecha</label>
+                                        <input type="date" class="form-control" id=""
                                             placeholder="Enter email">
                                     </div>
                                     <div class="form-group col-4 ">
-                                        <label for="exampleInputEmail1">ID</label>
-                                        <input type="number" class="form-control " id="exampleInputEmail1"
+                                        <label for="">ID</label>
+                                        <input type="number" class="form-control " id=""
                                             placeholder="Read Only">
                                     </div>
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-3 p-0">
-                                        <label for="exampleInputEmail1">Hora Entrada</label>
-                                        <input type="time" class="form-control" id="exampleInputEmail1"
+                                        <label for="">Hora Entrada</label>
+                                        <input type="time" class="form-control" id=""
                                             placeholder="Enter email">
                                     </div>
                                     <div class="form-group col-3 p-0">
-                                        <label for="exampleInputEmail1">Hora Salida</label>
-                                        <input type="time" class="form-control " id="exampleInputEmail1"
+                                        <label for="">Hora Salida</label>
+                                        <input type="time" class="form-control " id=""
                                             placeholder="Enter email">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
@@ -95,20 +95,72 @@
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-4 p-0">
-                                        <label for="exampleInputEmail1">S.A.M.</label>
-                                        <input type="number" step="0.1" class="form-control " id="exampleInputEmail1"
+                                        <label for="">S.A.M.</label>
+                                        <input type="number" step="0.1" class="form-control " id=""
                                             placeholder="use ,">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
-                                        <label for="exampleInputPassword1">Expertos</label>
+                                        <label for="">Expertos</label>
                                         <input type="number" min="1" max="90" step="1" class="form-control"
                                             iD="descanso" placeholder="Minutos">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
-                                        <label for="exampleInputPassword1">Cantidad</label>
+                                        <label for="">Cantidad</label>
                                         <input type="number" min="1" max="90" step="1" class="form-control"
                                             iD="descanso" placeholder="unidades">
                                     </div>
+                                </div>
+                                <div class="row box-body">
+                                    <div class="form-group col-6 p-0">
+                                        <label for="">Referencia</label>
+                                        <input type="text"  class="form-control " id=""
+                                            placeholder="use ,">
+                                    </div>
+                                    <div class="form-group col-3 p-0 ml-3">
+                                        <label for="">Tallas</label>
+                                        <input type="text"  class="form-control"
+                                            iD="descanso" placeholder="Minutos">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row box-body">
+                                    <div class="form-group col-12 p-0 mr-1">
+                                    <label for="">colores</label>
+                                        <div class="row">
+                                            <div class="col-2">
+                                               
+                                                <input type="color"  class=" " id="color1"
+                                                    value="#000000" onclick="color()">
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color"  class=" " id=""
+                                                 value="#ffffff"  >
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color"  class=" " id=""
+                                                  value="#ffffff" >
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color"  class=" " id=""
+                                                 value="#ffffff"  >
+                                            </div>
+                                            <div class="col-2">
+                                                <input type="color"  class=" " id=""
+                                                 value="#ffffff"  >
+                                            </div>
+                                            
+                                            <div class="col-2">
+                                                <input type="color"  class=" " id=""
+                                                 value="#ffffff"  >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group col-12  ">
+                                        <label for="">Notas</label>
+                                        <textarea class="form-control" rows="2"></textarea>
+                                    </div>
+                                    
                                 </div>
                                 <button type="submit" class="btn btn-outline b-accent text-accent m-b">Entrada</button>
                             </form>
@@ -116,7 +168,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="box">
+                    <div class="">
                         <div class="box-header">
                             <h2>O.P. creada</h2>
 
@@ -124,79 +176,107 @@
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
                             <form role="form">
-                                <div class="row">
-                                    <div class=" col-sm-4 mt-1 ">
+                                <div class="row box p-1">
+                                    <div class="col-3  mt-1 ">
                                         <label for="inputEmail3" class="col-sm-2 form-control-label ">Fecha: <p
                                                 class="text-success">15/10/2021</p></label>
 
 
                                     </div>
 
-                                    <div class=" col-sm-4 mt-1 text-center ">
+                                    <div class="col-3  mt-1 text-center ">
                                         <label for="inputEmail3" class=" form-control-label">Hora Entrada:<p
                                                 class="text-success">6:00</p></label>
 
 
                                     </div>
-                                    <div class=" col-sm-4 mt-1 text-center">
+                                    <div class="col-3  mt-1 text-center">
                                         <label for="inputEmail3" class=" form-control-label">Hora Salida:<p
                                                 class="text-success">15:00</p></label>
 
 
                                     </div>
+                                    <div class="col-3  mt-1 text-center">
+                                        <label for="inputEmail3" class=" form-control-label">Minutos:<p
+                                                class="text-success ">450</p></label>
+
+
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class=" col-sm-4 mt-1 ">
+                                <div class="row box p-1">
+                                    <div class="col-3  mt-1 ">
                                         <label for="inputEmail3" class="col-sm-2 form-control-label ">S.A.M: <p
                                                 class="text-warning text-md">3:56</p></label>
 
 
                                     </div>
 
-                                    <div class=" col-sm-4 mt-1 text-center ">
+                                    <div class="col-3  mt-1 text-center ">
                                         <label for="inputEmail3" class=" form-control-label">Cantidad:<p
                                                 class="text-success text-md">1236</p></label>
 
 
                                     </div>
-                                    <div class=" col-sm-4 mt-1 text-center">
-                                        <label for="inputEmail3" class=" form-control-label">Minutos:<p
-                                                class="text-success text-md">450</p></label>
+                                    <div class="col-3  mt-1 text-center ">
+                                        <label for="inputEmail3" class=" form-control-label">Expertos:<p
+                                                class="text-success text-md">10</p></label>
 
 
                                     </div>
-                                </div>
+                                    <div class="col-3  mt-1 text-center ">
+                                        <label for="inputEmail3" class=" form-control-label">TxExperto:<p
+                                                class="text-success text-md">1236</p></label>
 
 
-                                <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputPassword3"
-                                            placeholder="Password">
                                     </div>
+                                    
                                 </div>
-                                <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-2 form-control-label">File</label>
-                                    <div class="col-sm-10">
-                                        <input type="file" class="form-control">
+                                <div class="row box p-1">
+                                    <div class="col-8  mt-1 ">
+                                        <label for="inputEmail3" class=" form-control-label ">Referencia:<p                                              class="text-warning text-md">t-shirt clasica</p></label>
+
+
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-2 form-control-label">Select</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control c-select">
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                            <option>Option 3</option>
-                                        </select>
+
+                                    <div class="col-4  mt-1 text-center  p-1 ">
+                                        <label for="inputEmail3" class=" form-control-label">tallas:<p
+                                                class="text-success ">s-m</p></label>
+
+
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-2 form-control-label">Textarea</label>
+                                    
+                                </div>                                  
+                                <div class="form-group row box p-a">
+                                    <label for="inputPassword3" class="col-sm-2 form-control-label">Notas</label>
                                     <div class="col-sm-10">
                                         <textarea class="form-control" rows="2"></textarea>
                                     </div>
                                 </div>
+                                <div class="row box p-1">
+                                    <div class="col-8  mt-1 ">
+                                        <div>
+                                            <label for="inputEmail3" class=" form-control-label ">Colores:
+                                            
+                                            </label>
+                                        </div>
+                                        <div >
+                                            <span class="w-32 rounded indigo-500 "  id="cabeza" >
+                                            
+                                                </span>
+                                                <span class="w-32 rounded  indigo-500">
+                                            
+                                                </span>
+                                                <span class="w-32 rounded  indigo-500">
+                                            
+                                                </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4  mt-1 text-center  p-1 ">
+                                        <label for="inputEmail3" class=" form-control-label">tallas:<p
+                                                class="text-success ">s-m</p></label>
+                                    </div>                                    
+                                </div>  
                                 <div class="form-group row m-t-md">
                                     <div class="col-sm-offset-2 col-sm-10">
                                         <button type="submit" class="btn white">Sign in</button>
@@ -245,4 +325,18 @@
         <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
         <script src="scripts/ajax.js"></script>
         <!-- endbuild -->
+        <script>
+           
+
+           var color=()=> {
+            var b1 = document.getElementById("color1");
+            b1.style.background = "rgba(256,256,256,0.5)";
+            var cabeza = document.getElementById("cabeza");
+           
+           cabeza.style.background = b1.value;
+           };
+               
+           
+            
+        </script>
 </body>

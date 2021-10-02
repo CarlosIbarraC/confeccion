@@ -1,3 +1,11 @@
+<?php 
+session_start();
+$usuario=$_SESSION['username'];
+
+if(!isset($usuario)){
+  header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -305,11 +313,7 @@
                                                 class="text-success ">s-m</p></label>
                                     </div>
                                 </div>
-                                <div class="form-group row m-t-md">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn white">Guardar</button>
-                                    </div>
-                                </div>
+                                
                             </form>
                         </div>
                     </div>

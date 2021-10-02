@@ -26,7 +26,12 @@ a:focus {
 
 button {
   color: inherit; }
-
+.operacion{
+  border-style: inset;
+  border-radius: 20px;
+  border:1px solid #f8f8f8;
+  margin: 10px;
+}
 pre {
   color: inherit;
   background-color: #f8f8f8;

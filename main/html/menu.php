@@ -463,8 +463,8 @@
                 </li>
                 
                 <li class="hidden-folded" >
-                  <a href="docs.html" >
-                    <span class="nav-text">Documents</span>
+                  <a href="index.php" >
+                    <span class="nav-text">Salir</span>
                   </a>
                 </li>
             
@@ -478,7 +478,7 @@
         	      <img src="../assets/images/a0.jpg" alt="..." class="w-40 img-circle">
         	    </span>
         	    <span class="clear hidden-folded p-x">
-        	      <span class="block _500">Jean Reyes</span>
+        	      <span class="block _500">Ingeniero planta</span>
         	      <small class="block text-muted"><i class="fa fa-circle text-success m-r-sm"></i>online</small>
         	    </span>
         	</a>
@@ -492,7 +492,7 @@
     <div class="app-footer">
       <div class="p-2 text-xs">
         <div class="pull-right text-muted py-1">
-          &copy; Copyright <strong>Flatkit</strong> <span class="hidden-xs-down">- Built with Love v1.1.3</span>
+          &copy; Copyright <strong>Carlos Ibarra</strong> <span class="hidden-xs-down">- version 1.1.2</span>
           <a ui-scroll-to="content"><i class="fa fa-long-arrow-up p-x-sm"></i></a>
         </div>
         <div class="nav">

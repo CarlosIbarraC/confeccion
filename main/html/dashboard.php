@@ -1,3 +1,11 @@
+<?php 
+session_start();
+$usuario=$_SESSION['username'];
+
+if(!isset($usuario)){
+  header("location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -243,7 +251,7 @@
             <div class="input-group">
               <div class="input-group-prepend">
               </div>
-              <textarea class="form-control" aria-label="With textarea" row="2"></textarea>
+              <textarea class="form-control" aria-label="With textarea" row="2" readonly></textarea>
             </div>
           </div>
         </div>

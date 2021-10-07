@@ -1,10 +1,14 @@
 <?php 
+ini_set("session.cookie_lifetime","7");
+ini_set("session.gc_maxlifetime","7");
 session_start();
+error_reporting(E_ALL ^ E_NOTICE);
 $usuario=$_SESSION['username'];
-
-if(!isset($usuario)){
-  header("location:login.php");
+$supervisor=$_SESSION['usernameS'];
+if((!isset($usuario))&&(!isset($supervisor))){
+  header("location:login.php"); 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +40,27 @@ if(!isset($usuario)){
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+  <script type="text/javascript">
+   
+    window.addEventListener("beforeunload", function (e) {
+      ejecutar();
+      (e || window.event).returnValue = null;
+      return null;
+    });
+    
+
+    </script>
 </head>
 
 <body>
   <div class="app" id="app">
 
-    <?php require('menu.php') ?>
+ <?php 
+ if(!isset($supervisor)){
+  require('menu.php');
+ }
+ 
+ ?>   
 
 
 
@@ -370,6 +389,7 @@ if(!isset($usuario)){
       <!-- ############ PAGE END-->
 
     </div>
+    
   </div>
   <!-- / -->
 

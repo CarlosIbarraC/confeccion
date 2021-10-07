@@ -26,7 +26,7 @@
         <p>Themes:</p>
         <div data-target="bg" class="row no-gutter text-u-c text-center _600 clearfix">
           <label class="p-a col-sm-6 light pointer m-0">
-            <input type="radio" name="theme" value="" hidden>
+            <input type="radio" name="theme" value="black" hidden>
             Light
           </label>
           <label class="p-a col-sm-6 grey pointer m-0">

@@ -463,7 +463,7 @@
                 </li>
                 
                 <li class="hidden-folded" >
-                  <a href="index.php" >
+                  <a href="cerrarsesion.php" >
                     <span class="nav-text">Salir</span>
                   </a>
                 </li>

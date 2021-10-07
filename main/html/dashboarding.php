@@ -1,3 +1,17 @@
+<?php 
+ini_set("session.cookie_lifetime","7");
+ini_set("session.gc_maxlifetime","7");
+session_start();
+require "conexion.php";
+error_reporting(E_ALL ^ E_NOTICE);
+$usuario=$_SESSION['username'];
+$supervisor=$_SESSION['usernameS'];
+if((!isset($usuario))&&(!isset($supervisor))){
+  header("location:index.php"); 
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +42,16 @@
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+  <script type="text/javascript">
+   
+    window.addEventListener("beforeunload", function (e) {
+      cerrarLogin();
+      (e || window.event).returnValue = null;
+      return null;
+    });
+    
+
+    </script>
 </head>
 
 <body>
@@ -486,6 +510,40 @@
   <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
   <script src="scripts/ajax.js"></script>
   <!-- endbuild -->
+  <script>
+    var inFormOrLink;
+$('a').on('click', function() { inFormOrLink = true; });
+$('form').bind('submit', function() { inFormOrLink = true; });
+    $(window).on("beforeunload", function() { 
+    return inFormOrLink ? "Do you really want to close?" : null; 
+})
+  </script>
+  <script>
+function cerrarLogin() {
+
+estado = "<?php echo $usuario?> ";
+
+cadena = "estado=" + estado;
+
+console.log(cadena);
+$.ajax({
+  type: "POST",
+  url: "cerrarsesionA.php",
+  data: cadena,
+  success: function (r) {
+    if (r == 1) {
+      console.log('eliminado con exito');
+     
+    } else {
+
+      console.log('fallo en el servidor');
+    }
+  }
+})
+
+}
+
+  </script>
 </body>
 
 </html>

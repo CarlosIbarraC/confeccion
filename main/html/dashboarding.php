@@ -1,6 +1,4 @@
 <?php 
-ini_set("session.cookie_lifetime","7");
-ini_set("session.gc_maxlifetime","7");
 session_start();
 require "conexion.php";
 error_reporting(E_ALL ^ E_NOTICE);
@@ -417,7 +415,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
                 <div class="input-group">
                   <div class="input-group-prepend">
                   </div>
-                  <textarea class="form-control" aria-label="With textarea" row="2"></textarea>
+                  <textarea class="form-control" aria-label="With textarea" row="2" readonly></textarea>
                 </div>
               </div>
             </div>
@@ -510,6 +508,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
   <script src="scripts/ajax.js"></script>
   <!-- endbuild -->
+  
   <script>
     var inFormOrLink;
 $('a').on('click', function() { inFormOrLink = true; });
@@ -518,7 +517,9 @@ $('form').bind('submit', function() { inFormOrLink = true; });
     return inFormOrLink ? "Do you really want to close?" : null; 
 })
   </script>
+
   <script>
+  
 function cerrarLogin() {
 
 estado = "<?php echo $usuario?> ";

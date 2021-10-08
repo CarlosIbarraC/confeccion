@@ -1,6 +1,4 @@
 <?php 
-ini_set("session.cookie_lifetime","7");
-ini_set("session.gc_maxlifetime","7");
 session_start();
 error_reporting(E_ALL ^ E_NOTICE);
 $usuario=$_SESSION['username'];
@@ -43,7 +41,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <script type="text/javascript">
    
     window.addEventListener("beforeunload", function (e) {
-      ejecutar();
+      cerrarLogin();
       (e || window.event).returnValue = null;
       return null;
     });
@@ -364,24 +362,48 @@ if((!isset($usuario))&&(!isset($supervisor))){
         <div class="col-12 col-sm-4">
 
         <div class="box p-a">
-                <div class="clear">
-                  <h4 class="m-0 text-xs _300"><a href>Tallas<br><span class="text-xs">Prenda</span></a></h4>
-                  <small class="text-muted">3:10 min</small>
+                <div class="row">
+                    <div class="clear col-4">
+                      <h4 class="m-0 text-xs _300">Unidades<br><span class="text-xs">Primera</span></h4>
+                      <small class="text-muted">revisadas</small>
+                    </div>
+                    <div class="h3 col-8 center">
+                        <h2 id="suma" class="text-danger" >254</h2>
+                    </div>
                 </div>
               </div>
 
           <div class="box  p-t p-b col-12">
             <p class="text-center">
-
               <button class="m-r btn  purple-300">2.da.</button>
-              <button class="btn  green-300"><i class="material-icons ">&#xe87c;</i> Terminado</button>
+              <button class="btn  green-300" type="a" id="lanzar_alerta" onclick="ing(); "><i class="material-icons ">&#xe87c;</i> Terminado</button>
             </p>
 
           </div>
 
-
+          <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+          
         </div>
+        <script>
+         var acumulado=0;
 
+          function ing() {
+           
+            acumulado=acumulado+1;
+          
+
+            txt=document.getElementById("suma");
+            
+            console.log(txt.innerHTML=acumulado);
+            
+            return acumulado;
+          }
+     
+          
+           
+         
+      
+        </script>
       </div>
       <!-- ----------------------------FIN CUARTA hilera ---------------------- -->
 
@@ -392,7 +414,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
     
   </div>
   <!-- / -->
-
+ 
   <!-- theme switcher -->
   <?php 
  require('switchColor.php');
@@ -401,6 +423,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
 
   </div>
   <!-- build:js scripts/app.html.js -->
+  
   <!-- jQuery -->
   <script src="../libs/jquery/jquery/dist/jquery.js"></script>
   <!-- Bootstrap -->
@@ -430,6 +453,8 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
   <script src="scripts/ajax.js"></script>
   <!-- endbuild -->
+  
+ 
 </body>
 
 </html>

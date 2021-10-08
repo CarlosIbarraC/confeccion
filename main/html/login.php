@@ -1,6 +1,4 @@
 <?php 
-ini_set("session.cookie_lifetime","700");
-ini_set("session.gc_maxlifetime","700");
 session_start();
 require 'conexion.php';
 $usuario=$_POST['usuario'];

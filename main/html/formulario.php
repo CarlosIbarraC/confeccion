@@ -36,6 +36,12 @@ if(!isset($usuario)){
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+    <script type="text/javascript">
+   
+   
+   
+
+   </script>
 </head>
 
 <body>
@@ -91,10 +97,13 @@ if(!isset($usuario)){
                                 </div>
 
                                 <div class="form-group box-body mr-5 ml-0">
+                                    <!-- <form action="imagenes.php" method="post" enctype="multipart/form-data" name="imgForm" id="imgForm">
 
-                                    <label for="exampleInputFile">Subir archivo grafico</label>
-                                    <input type="file" id="exampleInputFile" class="form-control">
-
+                                        <label for="exampleInputFile">Subir archivo grafico</label>
+                                        <input type="file" id="exampleInputFile" class="form-control">
+                                    </form> -->
+                                    <label for="exampleInputFile">Subir archivo grafico </label>
+                                    <a href="fotos.php" class="btn btn-success btn-md ">seleccionar foto</a>
 
                                 </div>
                                 <div class="row box-body">
@@ -313,7 +322,7 @@ if(!isset($usuario)){
                                                 class="text-success ">s-m</p></label>
                                     </div>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -357,6 +366,7 @@ if(!isset($usuario)){
         <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
         <script src="scripts/ajax.js"></script>
         <!-- endbuild -->
+       
         <script>
             var color = () => {
                 var b1 = document.getElementById("color1");

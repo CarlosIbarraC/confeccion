@@ -40,13 +40,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-  <script type="text/javascript">
-    window.addEventListener("beforeunload", function (e) {
-      cerrarLogin();
-      (e || window.event).returnValue = null;
-      return null;
-    });
-  </script>
+ 
 </head>
 
 <body>
@@ -493,18 +487,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <script src="scripts/ajax.js"></script>
   <!-- endbuild -->
 
-  <script>
-    var inFormOrLink;
-    $('a').on('click', function () {
-      inFormOrLink = true;
-    });
-    $('form').bind('submit', function () {
-      inFormOrLink = true;
-    });
-    $(window).on("beforeunload", function () {
-      return inFormOrLink ? "Do you really want to close?" : null;
-    })
-  </script>
+  
 
   <script>
     function cerrarLogin() {

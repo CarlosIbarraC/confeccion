@@ -42,8 +42,8 @@ if((!isset($usuario))&&(!isset($supervisor))){
    
     window.addEventListener("beforeunload", function (e) {
       cerrarLogin();
-      (e || window.event).returnValue = null;
-      return null;
+     /*  (e || window.event).returnValue = null;
+      return null; */
     });
     
 
@@ -358,7 +358,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
             </div>
           </div>
         </div>
-
+<!-- //sincronizacion -->
         <div class="col-12 col-sm-4">
 
         <div class="box p-a">

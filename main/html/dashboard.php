@@ -4,7 +4,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 $usuario=$_SESSION['username'];
 $supervisor=$_SESSION['usernameS'];
 if((!isset($usuario))&&(!isset($supervisor))){
-  header("location:login.php"); 
+  header("location:index.php"); 
 }
 
 ?>
@@ -38,16 +38,16 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-  <script type="text/javascript">
+ <!--  <script type="text/javascript">
    
     window.addEventListener("beforeunload", function (e) {
       cerrarLogin();
-     /*  (e || window.event).returnValue = null;
-      return null; */
+      (e || window.event).returnValue = null;
+      return null;
     });
     
 
-    </script>
+    </script> -->
 </head>
 
 <body>

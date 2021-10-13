@@ -1,32 +1,11 @@
 <?php 
 session_start();
 $usuario=$_SESSION['username'];
+$_SESSION['Op']=456;
 if(!isset($usuario)){
   header("location:login.php");
 }
-$op=456;
 require "conexion.php";
-
-if($_SERVER['REQUEST_METHOD']== 'POST' && !empty($_FILES)){
-    print_r($_FILES);
-    $check = @getimagesize($_FILES['foto']['tmp_name']);
-    if($check !== false){
-       
-         $i=1;  
-       
-        $carpeta_destino = 'foto/';
-        $archivo_subido=$carpeta_destino.$_FILES['foto']['name'];
-        move_uploaded_file($_FILES['foto']['tmp_name'],$archivo_subido);
-        $name=$_FILES['foto']['name'];
-        $query="INSERT INTO tabla_fotos(foto_nombre,foto_op,foto_posicion) values ('$name','$op','$i')";
-        $consulta=mysqli_query($conexion,$query);
-    
-
-    }
-   
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +37,10 @@ if($_SERVER['REQUEST_METHOD']== 'POST' && !empty($_FILES)){
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/styles/jquery.selectareas.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/styles/jquery.selectareas.ie8.css" type="text/css" />
+
+
 </head>
 
 <body>
@@ -74,23 +57,43 @@ if($_SERVER['REQUEST_METHOD']== 'POST' && !empty($_FILES)){
                         </div>
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
-                           
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Nombre foto</label>
-                                    <h3 id="nombreFoto"> - - - </h3>
-                                </div>
 
-                                <form method="post" enctype="multipart/form-data" action= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" >
-                                    <div class="form-group">
-                                        <label for="subirFoto">File input</label>
-                                        <input type="file" id="subirFoto" class="form-control" name="foto">
-                                        <p class="help-block">archivo jpg</p>
-                                    </div>
-                                    <input type="submit" class="btn white m-b">
-                                </form>
-
-                                
                             
+
+                            <form method="post" enctype="multipart/form-data" action="subirFoto.php">
+                                <div class="form-group">
+                                    <label for="subirFoto">File input</label>
+                                    <input type="file" id="subirFoto" class="form-control" name="foto">
+                                    <p class="help-block">archivo jpg</p>
+                                </div>
+                                <div class="row box-body m-auto">
+                                    <div class="form-group col-4">
+                                        <input class="form-check-input" type="radio" name="radioFoto"
+                                            id="radioFoto1" value="1" checked>
+                                        <label class="form-check-label h6" for="radioFoto1">
+                                       1- <i class="material-icons">&#xe3b6;</i>
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <input class="form-check-input" type="radio" name="radioFoto"
+                                            id="radioFoto2" value="2" >
+                                        <label class="form-check-label h6 mr-2" for="radioFoto1">
+                                       2- <i class="material-icons">&#xe3b6;</i>
+                                        </label>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <input class="form-check-input" type="radio" name="radioFoto"
+                                            id="radioFoto2" value="3" >
+                                        <label class="form-check-label h6" for="radioFoto1">
+                                       3- <i class="material-icons">&#xe3b6;</i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary m-b">guardar</button>
+                            </form>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -101,35 +104,43 @@ if($_SERVER['REQUEST_METHOD']== 'POST' && !empty($_FILES)){
             <!--  <---------------------------comienzo de galeria -------------------------------------------->
             <div class="row">
 
-                <!-- <div class="col-md-12 pull-md-3">
-          <div class="row"> -->
+               <?php 
+               $op=$_SESSION['Op'];
+               $num='3';
+               $queryI="SELECT  foto_nombre,foto_posicion FROM tabla_fotos where foto_op = '$op'order by foto_posicion";
+               $consultaI=mysqli_query($conexion,$queryI);               
+               while ($row = mysqli_fetch_array($consultaI, MYSQLI_ASSOC)) {
+                
+                ?>
                 <div class="col-xs-6 col-sm-4  ">
                     <div class="box p-a-xs">
-                        <a href="#"><img src="../assets/images/foto-web.jpg" alt="" class="img-responsive"></a>
+                        <figure href="#"><img src="foto/<?php echo $row['foto_nombre'] ?>  " alt="" class="img-responsive" id="<?php echo $row['foto_posicion'].$row['foto_nombre'] ?>  "  ></figure>
                         <div class="p-a-sm">
-                            <div class="text-ellipsis">Skyline collection</div>
+                            <div class="text-ellipsis"><?php echo $row['foto_nombre'] ?></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-4 ">
-                    <div class="box p-a-xs">
-                        <a href="#"><img src="../assets/images/prueba1010211.jpg" alt="" class="img-responsive"></a>
-                        <div class="p-a-sm">
-                            <div class="text-ellipsis">Morbi nec nunc condimentum</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-4 ">
-                    <div class="box p-a-xs">
-                        <a href="#"><img src="../assets/images/prueba1010212.jpg" alt="" class="img-responsive"></a>
-                        <div class="p-a-sm">
-                            <div class="text-ellipsis">Vestibulum ullamcorper sodales nisi</div>
-                        </div>
-                    </div>
-                </div>
+                <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+                <script src="../js/jquery.selectareas.min.js"></script>
+                <script>
+
+                $('#<?php echo $row['foto_posicion'].$row['foto_nombre'] ?>').selectAreas({
+                    allowEdit:true,
+                    allowMove:true,
+                    allowResize:true,
+                    allowSelect:true
+                })
+                </script>
+                <?php
                
+           }
+           
+               ?>
+                
+                
+
             </div>
-            
+
         </div>
     </div>
 
@@ -143,7 +154,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST' && !empty($_FILES)){
     </div>
     <!-- build:js scripts/app.html.js -->
     <!-- jQuery -->
-    <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+   
     <!-- Bootstrap -->
     <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
     <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -170,6 +181,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST' && !empty($_FILES)){
     <!-- ajax -->
     <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
     <script src="scripts/ajax.js"></script>
+    
     <!-- endbuild -->
-
+    
 </body>

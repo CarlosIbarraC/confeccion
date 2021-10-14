@@ -37,23 +37,30 @@ require "conexion.php";
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-    <link rel="stylesheet" href="../assets/styles/jquery.selectareas.css" type="text/css" />
-    <link rel="stylesheet" href="../assets/styles/jquery.selectareas.ie8.css" type="text/css" />
+    
+   
+   
 
-
+  
 </head>
 
 <body>
     <div class="app" id="app">
-
-        <?php require('menu.php') ?>
+    <?php require('menu.php'); ?>
+       
         <div class="padding">
+       
             <div class="row ">
                 <div class="col-md-6 m-auto">
                     <div class="box">
-                        <div class="box-header">
-                            <h2>Ingreso de imagenes</h2>
-                            <small>ingrese tres fotos ,sugerimos frontal, espalda y estampado .</small>
+                        <div class="box-header row">
+                            <div class="col-8">
+                                <h2>Ingreso de imagenes</h2>
+                                <small>ingrese tres fotos ,sugerimos frontal, espalda y estampado .</small>
+                            </div>
+                            <div class="col-1">
+                                    <a href="formulario.php" class="btn btn-warning"> volver</a>
+                                </div>
                         </div>
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
@@ -112,7 +119,7 @@ require "conexion.php";
                while ($row = mysqli_fetch_array($consultaI, MYSQLI_ASSOC)) {
                 
                 ?>
-                <div class="col-xs-6 col-sm-4  ">
+                <div class="col-4   ">
                     <div class="box p-a-xs">
                         <figure href="#"><img src="foto/<?php echo $row['foto_nombre'] ?>  " alt="" class="img-responsive" id="<?php echo $row['foto_posicion'].$row['foto_nombre'] ?>  "  ></figure>
                         <div class="p-a-sm">
@@ -120,17 +127,7 @@ require "conexion.php";
                         </div>
                     </div>
                 </div>
-                <script src="../libs/jquery/jquery/dist/jquery.js"></script>
-                <script src="../js/jquery.selectareas.min.js"></script>
-                <script>
-
-                $('#<?php echo $row['foto_posicion'].$row['foto_nombre'] ?>').selectAreas({
-                    allowEdit:true,
-                    allowMove:true,
-                    allowResize:true,
-                    allowSelect:true
-                })
-                </script>
+                
                 <?php
                
            }
@@ -153,35 +150,34 @@ require "conexion.php";
 
     </div>
     <!-- build:js scripts/app.html.js -->
-    <!-- jQuery -->
-   
-    <!-- Bootstrap -->
-    <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
-    <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-    <!-- core -->
-    <script src="../libs/jquery/underscore/underscore-min.js"></script>
-    <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-    <script src="../libs/jquery/PACE/pace.min.js"></script>
+       <!-- jQuery -->
+       <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+        <!-- Bootstrap -->
+        <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+        <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- core -->
+        <script src="../libs/jquery/underscore/underscore-min.js"></script>
+        <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+        <script src="../libs/jquery/PACE/pace.min.js"></script>
 
-    <script src="scripts/config.lazyload.js"></script>
+        <script src="scripts/config.lazyload.js"></script>
 
-    <script src="scripts/palette.js"></script>
-    <script src="scripts/ui-load.js"></script>
-    <script src="scripts/ui-jp.js"></script>
-    <script src="scripts/ui-include.js"></script>
-    <script src="scripts/ui-device.js"></script>
-    <script src="scripts/ui-form.js"></script>
-    <script src="scripts/ui-nav.js"></script>
-    <script src="scripts/ui-screenfull.js"></script>
-    <script src="scripts/ui-scroll-to.js"></script>
-    <script src="scripts/ui-toggle-class.js"></script>
+        <script src="scripts/palette.js"></script>
+        <script src="scripts/ui-load.js"></script>
+        <script src="scripts/ui-jp.js"></script>
+        <script src="scripts/ui-include.js"></script>
+        <script src="scripts/ui-device.js"></script>
+        <script src="scripts/ui-form.js"></script>
+        <script src="scripts/ui-nav.js"></script>
+        <script src="scripts/ui-screenfull.js"></script>
+        <script src="scripts/ui-scroll-to.js"></script>
+        <script src="scripts/ui-toggle-class.js"></script>
 
-    <script src="scripts/app.js"></script>
+        <script src="scripts/app.js"></script>
 
-    <!-- ajax -->
-    <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-    <script src="scripts/ajax.js"></script>
-    
-    <!-- endbuild -->
+        <!-- ajax -->
+        <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+        <script src="scripts/ajax.js"></script>
+        <!-- endbuild -->
     
 </body>

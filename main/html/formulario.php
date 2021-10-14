@@ -1,6 +1,9 @@
 <?php 
 session_start();
+require "funciones.php";
+//require "conexion.php";
 $usuario=$_SESSION['username'];
+$op=$_SESSION['Op'];
 
 if(!isset($usuario)){
   header("location:login.php");
@@ -118,11 +121,15 @@ if(!isset($usuario)){
                                     </div>
                                 </div>
                                 <div class="row box-body">
-                                    <div class="form-group col-6 p-0">
+                                    <div class="form-group col-12 col-sm-4 p-0">
                                         <label for="">Referencia</label>
-                                        <input type="text" class="form-control " id="" placeholder="use ,">
+                                        <input type="text" class="form-control " id="" placeholder="referencia">
                                     </div>
-                                    <div class="form-group col-3 p-0 ml-3">
+                                    <div class="form-group col-6 col-sm-4 p-0 ml-3">
+                                        <label for="">Estampado</label>
+                                        <input type="text" class="form-control " id="" placeholder="estampado ">
+                                    </div>
+                                    <div class="form-group col-6 col-sm-2 p-0 ml-3">
                                         <label for="">Tallas</label>
                                         <input type="text" class="form-control" iD="descanso" placeholder="Minutos">
                                     </div>
@@ -232,8 +239,14 @@ if(!isset($usuario)){
 
                                 </div>
                                 <div class="row box p-1">
-                                    <div class="col-8  mt-1 ">
+                                    <div class="col-4  mt-1 ">
                                         <label for="inputEmail3" class=" form-control-label ">Referencia:<p
+                                                class="text-warning text-md">t-shirt clasica</p></label>
+
+
+                                    </div>
+                                    <div class="col-4  mt-1 ">
+                                        <label for="inputEmail3" class=" form-control-label ">Estampado:<p
                                                 class="text-warning text-md">t-shirt clasica</p></label>
 
 
@@ -256,13 +269,13 @@ if(!isset($usuario)){
                                 </div>
                                 <div class="form-group row box p-a  justify-content-center">
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="../assets/images/b0.jpg" class="w-sm img-fluid max-width:100%">
+                                        <img src="foto/<?php echo imagenes(1,456); ?>" class="w-sm img-fluid max-width:100%">
                                     </div>
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="../assets/images/b9.jpg" class="w-sm img-fluid max-width:100%">
+                                        <img src="foto/<?php echo imagenes(2,456); ?>" class="w-sm img-fluid max-width:100%">
                                     </div>
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="../assets/images/b8.jpg" class="w-sm img-fluid max-width:100%">
+                                        <img src="foto/<?php echo imagenes(3,456); ?>" class="w-sm img-fluid max-width:100%">
                                     </div>
                                 </div>
                                 <div class="row box p-1">
@@ -360,6 +373,17 @@ if(!isset($usuario)){
         <!-- ajax -->
         <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
         <script src="scripts/ajax.js"></script>
+        <script src="../js/funciones.js">
+   
+    </script>
+     <script>
+         $(document).ready(function() {
+            fechaControl();
+            var fecha=new Date();
+            var hoy=fecha.getDate();
+            console.log(hoy);
+             });
+     </script>
         <!-- endbuild -->
        
         <script>

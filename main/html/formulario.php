@@ -14,7 +14,7 @@ if(!isset($usuario)){
 
 <head>
     <meta charset="utf-8" />
-    <title>Confeccion Programa de Carlos Ibarra C</title>
+    <title>Confeccion Programa  Carlos Ibarra C</title>
     <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,11 +39,11 @@ if(!isset($usuario)){
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-    
-   
-   
 
-  
+
+
+
+
 </head>
 
 <body>
@@ -70,36 +70,37 @@ if(!isset($usuario)){
 
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
-                            <form role="form">
+                            <form role="form" method="post" action="guardarOp.php">
                                 <div class="row box-body">
 
                                     <div class="form-group col-6 p-0">
                                         <label for="">Fecha</label>
-                                        <input type="date" class="form-control" id="" placeholder="Enter email">
+                                        <input type="date" class="form-control" id="fechaOp" name="fecha" onChange="fechaControl()">
                                     </div>
                                     <div class="form-group col-4 ">
-                                        <label for="">ID</label>
-                                        <input type="number" class="form-control " id="" placeholder="Read Only">
+                                        <label for="">OP N°</label>
+                                        <input type="number" class="form-control " id="numeroOp" name="numeroOp"
+                                            value="1000" placeholder="Read Only">
                                     </div>
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-3 p-0">
                                         <label for="">Hora Entrada</label>
-                                        <input type="time" class="form-control" id="" placeholder="Enter email">
+                                        <input type="time" class="form-control" id="" name="horaE">
                                     </div>
                                     <div class="form-group col-3 p-0">
                                         <label for="">Hora Salida</label>
-                                        <input type="time" class="form-control " id="" placeholder="Enter email">
+                                        <input type="time" class="form-control " id="" name="horaS">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="exampleInputPassword1">Descanso</label>
-                                        <input type="number" min="1" max="90" class="form-control " iD="descanso"
-                                            placeholder="Minutos">
+                                        <input type="num" min="1" max="90" class="form-control " iD="" name="descanso"
+                                            placeholder="minutos">
                                     </div>
                                 </div>
 
                                 <div class="form-group box-body mr-5 ml-0">
-                                   
+
                                     <label for="exampleInputFile">Subir archivo grafico </label>
                                     <a href="fotos.php" class="btn btn-success btn-md ">seleccionar foto</a>
 
@@ -107,31 +108,34 @@ if(!isset($usuario)){
                                 <div class="row box-body">
                                     <div class="form-group col-4 p-0">
                                         <label for="">S.A.M.</label>
-                                        <input type="number" step="0.1" class="form-control " id="" placeholder="use ,">
+                                        <input type="number" step="0.1" class="form-control " id="" name="sam">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="">Expertos</label>
-                                        <input type="number" min="1" max="90" step="1" class="form-control"
-                                            iD="descanso" placeholder="Minutos">
+                                        <input type="number" min="1" max="90" step="1" class="form-control" iD=""
+                                            name="expertos">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="">Cantidad</label>
-                                        <input type="number" min="1" max="90" step="1" class="form-control"
-                                            iD="descanso" placeholder="unidades">
+                                        <input type="number" class="form-control" iD="" name="cantidad"
+                                            placeholder="unidades">
                                     </div>
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-12 col-sm-4 p-0">
                                         <label for="">Referencia</label>
-                                        <input type="text" class="form-control " id="" placeholder="referencia">
+                                        <input type="text" class="form-control " id="" name="referencia"
+                                            placeholder="referencia">
                                     </div>
-                                    <div class="form-group col-6 col-sm-4 p-0 ml-3">
+                                    <div class="form-group col-5 col-sm-4 p-0 ml-3">
                                         <label for="">Estampado</label>
-                                        <input type="text" class="form-control " id="" placeholder="estampado ">
+                                        <input type="text" class="form-control " id="" name="estampado"
+                                            placeholder="estampado ">
                                     </div>
-                                    <div class="form-group col-6 col-sm-2 p-0 ml-3">
+                                    <div class="form-group col-5 col-sm-2 p-0 ml-3">
                                         <label for="">Tallas</label>
-                                        <input type="text" class="form-control" iD="descanso" placeholder="Minutos">
+                                        <input type="text" class="form-control" iD="" name="tallas"
+                                            placeholder="Minutos">
                                     </div>
 
                                 </div>
@@ -141,31 +145,30 @@ if(!isset($usuario)){
                                         <div class="row">
                                             <div class="col-2">
 
-                                                <input type="color" class=" " id="color1" value="#000000"
-                                                    onclick="color()">
+                                                <input type="color" class=" " name="color1" id="color1" >
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" value="#ffffff">
+                                                <input type="color" class=" " id="" name="color2">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" value="#ffffff">
+                                                <input type="color" class=" " id="" name="color3">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" value="#ffffff">
+                                                <input type="color" class=" " id="" name="color4">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" value="#ffffff">
+                                                <input type="color" class=" " id="" name="color5">
                                             </div>
 
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" value="#ffffff">
+                                                <input type="color" class=" " id="" name="color6" >
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group col-12  ">
                                         <label for="">Notas</label>
-                                        <textarea class="form-control" rows="2"></textarea>
+                                        <textarea class="form-control" rows="2" name="notas"></textarea>
                                     </div>
 
                                 </div>
@@ -174,6 +177,7 @@ if(!isset($usuario)){
                         </div>
                     </div>
                 </div>
+                <!--  ------------------------------fin formulario-------------------------------------------------- -->
                 <div class="col-md-6">
                     <div class="">
                         <div class="box-header">
@@ -269,13 +273,16 @@ if(!isset($usuario)){
                                 </div>
                                 <div class="form-group row box p-a  justify-content-center">
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="foto/<?php echo imagenes(1,456); ?>" class="w-sm img-fluid max-width:100%">
+                                        <img src="foto/<?php echo imagenes(1,456); ?>"
+                                            class="w-sm img-fluid max-width:100%">
                                     </div>
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="foto/<?php echo imagenes(2,456); ?>" class="w-sm img-fluid max-width:100%">
+                                        <img src="foto/<?php echo imagenes(2,456); ?>"
+                                            class="w-sm img-fluid max-width:100%">
                                     </div>
                                     <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="foto/<?php echo imagenes(3,456); ?>" class="w-sm img-fluid max-width:100%">
+                                        <img src="foto/<?php echo imagenes(3,456); ?>"
+                                            class="w-sm img-fluid max-width:100%">
                                     </div>
                                 </div>
                                 <div class="row box p-1">
@@ -374,18 +381,37 @@ if(!isset($usuario)){
         <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
         <script src="scripts/ajax.js"></script>
         <script src="../js/funciones.js">
-   
-    </script>
-     <script>
-         $(document).ready(function() {
-            fechaControl();
-            var fecha=new Date();
-            var hoy=fecha.getDate();
-            console.log(hoy);
-             });
-     </script>
+
+        </script>
+        <script>
+            $(document).ready(function () {
+                fechaControl();
+                var fecha = new Date();
+                var hoy = fecha.getDay();
+                console.log(hoy);
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+
+                $.ajax(
+
+                    {
+                        url: "traerultimaOp.php",
+                        success: function (data) {
+                            $("#numeroOp").val(JSON.parse(data));
+                           /*  console.log('Data from the server' + data); */
+                        },
+                        error: function () {
+                            alert('error en el servidor');
+                        }
+                    }
+                );
+            });
+        </script>
+        
         <!-- endbuild -->
-       
+  #fff
         <script>
             var color = () => {
                 var b1 = document.getElementById("color1");

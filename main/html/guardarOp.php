@@ -1,5 +1,6 @@
 <?php 
 session_start();
+setcookie("variable",1000);
 require "conexion.php";
 if(!isset($_POST['numeroOp'])&&!isset($_POST['fecha'])){
     header("location:formulario.php");  
@@ -15,13 +16,13 @@ $cantidad=$_POST['cantidad'];
 $referencia=$_POST['referencia'];
 $estampado=$_POST['estampado'];
 $tallas=$_POST['tallas'];
-$color1=$_POST['color1'];
-$color2=$_POST['color2'];
-$color3=$_POST['color3'];
-$color4=$_POST['color4'];
-$color5=$_POST['color5'];
-$color6=$_POST['color6'];
-$notas=$_POST['notas'];
+$retVal1 = ($_POST['color1']!=="#351717") ? $color1=$_POST['color1'] : $color1="sin select" ;
+$retVal2 = ($_POST['color2']!=="#351717") ? $color2=$_POST['color2'] : $color2="sin select" ;
+$retVal3 = ($_POST['color3']!=="#351717") ? $color3=$_POST['color3'] : $color3="sin select" ;
+$retVal4 = ($_POST['color4']!=="#351717") ? $color4=$_POST['color4'] : $color4="sin select" ;
+$retVal5 = ($_POST['color5']!=="#351717") ? $color5=$_POST['color5'] : $color5="sin select" ;
+$retVal6 = ($_POST['color6']!=="#351717") ? $color6=$_POST['color6'] : $color6="sin select" ;
+
 
 
 

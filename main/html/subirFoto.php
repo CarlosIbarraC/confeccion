@@ -2,7 +2,7 @@
 session_start();
 $usuario=$_SESSION['username'];
 $numeroFoto= $_POST['radioFoto'];
-$op=$_SESSION['Op'];
+$op=$_COOKIE['variable'];
 require "conexion.php";
 
 

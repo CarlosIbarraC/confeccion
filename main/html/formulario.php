@@ -3,11 +3,14 @@ session_start();
 require "funciones.php";
 //require "conexion.php";
 $usuario=$_SESSION['username'];
-$op=$_SESSION['Op'];
+$formOp=$_COOKIE['variable'];
+
 
 if(!isset($usuario)){
   header("location:login.php");
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +42,7 @@ if(!isset($usuario)){
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-
+    
 
 
 
@@ -52,7 +55,7 @@ if(!isset($usuario)){
         <?php require('menu.php') ?>
         <div class="padding">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-12">
                     <div class="box">
                         <div class="box-header">
                             <div class="row">
@@ -75,7 +78,7 @@ if(!isset($usuario)){
 
                                     <div class="form-group col-6 p-0">
                                         <label for="">Fecha</label>
-                                        <input type="date" class="form-control" id="fechaOp" name="fecha" onChange="fechaControl()">
+                                        <input type="date" class="form-control" id="fechaOp" name="fecha" onChange="fechaControl()" required>
                                     </div>
                                     <div class="form-group col-4 ">
                                         <label for="">OP N°</label>
@@ -86,11 +89,11 @@ if(!isset($usuario)){
                                 <div class="row box-body">
                                     <div class="form-group col-3 p-0">
                                         <label for="">Hora Entrada</label>
-                                        <input type="time" class="form-control" id="" name="horaE">
+                                        <input type="time" class="form-control" id="" name="horaE" >
                                     </div>
                                     <div class="form-group col-3 p-0">
                                         <label for="">Hora Salida</label>
-                                        <input type="time" class="form-control " id="" name="horaS">
+                                        <input type="time" class="form-control " id="" name="horaS" required>
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="exampleInputPassword1">Descanso</label>
@@ -99,38 +102,58 @@ if(!isset($usuario)){
                                     </div>
                                 </div>
 
-                                <div class="form-group box-body mr-5 ml-0">
+                                <div class="form-group box-body mr-5 ml-0 ">
 
-                                    <label for="exampleInputFile">Subir archivo grafico </label>
-                                    <a href="fotos.php" class="btn btn-success btn-md ">seleccionar foto</a>
-
+                                    <label for="">Subir archivo grafico </label>
+                                    <a href="fotos.php" class="btn btn-success btn-md ml-4">Subir foto</a>
+                                    <div class="form-group row box p-a  operacion ">
+                                    <div class=" col-4 pull-none-xs  w p-a-xs  ">
+                                        <img src="foto/<?php 
+                                        if(imagenes(1,$formOp)== null){
+                                            $formOp=1000;
+                                            echo imagenes(1,$formOp);
+                                        }else{
+                                            echo imagenes(1,$formOp); 
+                                        }
+                                         ?>"
+                                            class="w-sm img-fluid max-width:100% ">
+                                    </div>
+                                    <div class=" col-4 pull-none-xs  w p-a-xs  ">
+                                        <img src="foto/<?php echo imagenes(2,$formOp); ?>"
+                                            class="w-sm img-fluid max-width:100%">
+                                    </div>
+                                    <div class=" col-4 pull-none-xs  w p-a-xs  ">
+                                        <img src="foto/<?php echo imagenes(3,$formOp); ?>"
+                                            class="w-sm img-fluid max-width:100%">
+                                    </div>
+                                </div>
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-4 p-0">
                                         <label for="">S.A.M.</label>
-                                        <input type="number" step="0.1" class="form-control " id="" name="sam">
+                                        <input type="number" step="0.1" class="form-control " id="" name="sam" required>
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="">Expertos</label>
                                         <input type="number" min="1" max="90" step="1" class="form-control" iD=""
-                                            name="expertos">
+                                            name="expertos" required>
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="">Cantidad</label>
                                         <input type="number" class="form-control" iD="" name="cantidad"
-                                            placeholder="unidades">
+                                            placeholder="unidades" required>
                                     </div>
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-12 col-sm-4 p-0">
                                         <label for="">Referencia</label>
                                         <input type="text" class="form-control " id="" name="referencia"
-                                            placeholder="referencia">
+                                            placeholder="referencia" required>
                                     </div>
                                     <div class="form-group col-5 col-sm-4 p-0 ml-3">
                                         <label for="">Estampado</label>
                                         <input type="text" class="form-control " id="" name="estampado"
-                                            placeholder="estampado ">
+                                            placeholder="estampado " required>
                                     </div>
                                     <div class="form-group col-5 col-sm-2 p-0 ml-3">
                                         <label for="">Tallas</label>
@@ -145,23 +168,23 @@ if(!isset($usuario)){
                                         <div class="row">
                                             <div class="col-2">
 
-                                                <input type="color" class=" " name="color1" id="color1" >
+                                                <input type="color" class=" " name="color1" id="color1"  value="#351717">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" name="color2">
+                                                <input type="color" class=" " id="" name="color2" value="#351717">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" name="color3">
+                                                <input type="color" class=" " id="" name="color3" value="#351717">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" name="color4">
+                                                <input type="color" class=" " id="" name="color4" value="#351717">
                                             </div>
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" name="color5">
+                                                <input type="color" class=" " id="" name="color5" value="#351717">
                                             </div>
 
                                             <div class="col-2">
-                                                <input type="color" class=" " id="" name="color6" >
+                                                <input type="color" class=" " id="" name="color6"  value="#351717">
                                             </div>
                                         </div>
                                     </div>
@@ -178,170 +201,7 @@ if(!isset($usuario)){
                     </div>
                 </div>
                 <!--  ------------------------------fin formulario-------------------------------------------------- -->
-                <div class="col-md-6">
-                    <div class="">
-                        <div class="box-header">
-                            <h2>O.P. creada</h2>
-
-                        </div>
-                        <div class="box-divider m-0"></div>
-                        <div class="box-body">
-                            <form role="form">
-                                <div class="row box p-1">
-                                    <div class="col-3  mt-1 ">
-                                        <label for="inputEmail3" class="col-sm-2 form-control-label ">Fecha: <p
-                                                class="text-success">15/10/2021</p></label>
-
-
-                                    </div>
-
-                                    <div class="col-3  mt-1 text-center ">
-                                        <label for="inputEmail3" class=" form-control-label">Hora Entrada:<p
-                                                class="text-success">6:00</p></label>
-
-
-                                    </div>
-                                    <div class="col-3  mt-1 text-center">
-                                        <label for="inputEmail3" class=" form-control-label">Hora Salida:<p
-                                                class="text-success">15:00</p></label>
-
-
-                                    </div>
-                                    <div class="col-3  mt-1 text-center">
-                                        <label for="inputEmail3" class=" form-control-label">Minutos:<p
-                                                class="text-success ">450</p></label>
-
-
-                                    </div>
-                                </div>
-                                <div class="row box p-1">
-                                    <div class="col-3  mt-1 ">
-                                        <label for="inputEmail3" class="col-sm-2 form-control-label ">S.A.M: <p
-                                                class="text-warning text-md">3:56</p></label>
-
-
-                                    </div>
-
-                                    <div class="col-3  mt-1 text-center ">
-                                        <label for="inputEmail3" class=" form-control-label">Cantidad:<p
-                                                class="text-success text-md">1236</p></label>
-
-
-                                    </div>
-                                    <div class="col-3  mt-1 text-center ">
-                                        <label for="inputEmail3" class=" form-control-label">Expertos:<p
-                                                class="text-success text-md">10</p></label>
-
-
-                                    </div>
-                                    <div class="col-3  mt-1 text-center ">
-                                        <label for="inputEmail3" class=" form-control-label">TxExperto:<p
-                                                class="text-success text-md">1236</p></label>
-
-
-                                    </div>
-
-                                </div>
-                                <div class="row box p-1">
-                                    <div class="col-4  mt-1 ">
-                                        <label for="inputEmail3" class=" form-control-label ">Referencia:<p
-                                                class="text-warning text-md">t-shirt clasica</p></label>
-
-
-                                    </div>
-                                    <div class="col-4  mt-1 ">
-                                        <label for="inputEmail3" class=" form-control-label ">Estampado:<p
-                                                class="text-warning text-md">t-shirt clasica</p></label>
-
-
-                                    </div>
-
-                                    <div class="col-4  mt-1 text-center  p-1 ">
-                                        <label for="inputEmail3" class=" form-control-label">tallas:<p
-                                                class="text-success ">s-m</p></label>
-
-
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row box p-a">
-                                    <label for="inputPassword3" class="col-sm-2 form-control-label">Notas</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" rows="2"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row box p-a  justify-content-center">
-                                    <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="foto/<?php echo imagenes(1,456); ?>"
-                                            class="w-sm img-fluid max-width:100%">
-                                    </div>
-                                    <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="foto/<?php echo imagenes(2,456); ?>"
-                                            class="w-sm img-fluid max-width:100%">
-                                    </div>
-                                    <div class=" col-4 pull-none-xs  w p-a-xs ">
-                                        <img src="foto/<?php echo imagenes(3,456); ?>"
-                                            class="w-sm img-fluid max-width:100%">
-                                    </div>
-                                </div>
-                                <div class="row box p-1">
-                                    <div class="col-8  mt-1 ">
-                                        <div>
-                                            <label for="inputEmail3" class=" form-control-label ">Colores:
-
-                                            </label>
-                                        </div>
-                                        <div class="row align-items-center">
-                                            <div>
-                                                <span class="w-32 rounded indigo-500 m-a" id="cabeza">
-
-                                                </span>
-                                                <p class="text-xs text-center">#000000</p>
-                                            </div>
-                                            <div class="border  border-success">
-                                                <span class="w-32 rounded indigo-500 m-a" id="cabeza">
-
-                                                </span>
-                                                <p class="text-xs text-center">#000000</p>
-                                            </div>
-                                            <div>
-                                                <span class="w-32 rounded indigo-500 m-a" id="cabeza">
-
-                                                </span>
-                                                <p class="text-xs text-center">#000000</p>
-                                            </div>
-                                            <div>
-                                                <span class="w-32 rounded indigo-500 m-a" id="cabeza">
-
-                                                </span>
-                                                <p class="text-xs text-center">#000000</p>
-                                            </div>
-                                            <div>
-                                                <span class="w-32 rounded indigo-500 m-a" id="cabeza">
-
-                                                </span>
-                                                <p class="text-xs text-center">#000000</p>
-                                            </div>
-                                            <div>
-                                                <span class="w-32 rounded indigo-500 m-a" id="cabeza">
-
-                                                </span>
-                                                <p class="text-xs text-center">#000000</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-4  mt-1 text-center  p-1 ">
-                                        <label for="inputEmail3" class=" form-control-label">tallas:<p
-                                                class="text-success ">s-m</p></label>
-                                    </div>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
+        
 
 
             </div>
@@ -385,14 +245,6 @@ if(!isset($usuario)){
         </script>
         <script>
             $(document).ready(function () {
-                fechaControl();
-                var fecha = new Date();
-                var hoy = fecha.getDay();
-                console.log(hoy);
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
 
                 $.ajax(
 
@@ -409,9 +261,18 @@ if(!isset($usuario)){
                 );
             });
         </script>
+        <script>
+            $(document).ready(function () {
+                fechaControl();
+                var fecha = new Date();
+                var hoy = fecha.getDay();
+                console.log(hoy);
+            });
+        </script>
+        
         
         <!-- endbuild -->
-  #fff
+
         <script>
             var color = () => {
                 var b1 = document.getElementById("color1");

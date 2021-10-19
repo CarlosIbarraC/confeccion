@@ -1,7 +1,6 @@
 <?php 
 session_start();
 $usuario=$_SESSION['username'];
-$_SESSION['Op']=456;
 if(!isset($usuario)){
   header("location:login.php");
 }
@@ -37,19 +36,19 @@ require "conexion.php";
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
     <!-- endbuild -->
     <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-    
-   
-   
 
-  
+
+
+
+
 </head>
 
 <body>
     <div class="app" id="app">
-    <?php require('menu.php'); ?>
-       
+        <?php require('menu.php'); ?>
+
         <div class="padding">
-       
+
             <div class="row ">
                 <div class="col-md-6 m-auto">
                     <div class="box">
@@ -59,40 +58,44 @@ require "conexion.php";
                                 <small>ingrese tres fotos ,sugerimos frontal, espalda y estampado .</small>
                             </div>
                             <div class="col-1">
-                                    <a href="formulario.php" class="btn btn-warning"> volver</a>
-                                </div>
+                                <a href="formulario.php" class="btn btn-warning"> volver</a>
+                            </div>
                         </div>
                         <div class="box-divider m-0"></div>
                         <div class="box-body">
 
-                            
+
 
                             <form method="post" enctype="multipart/form-data" action="subirFoto.php">
                                 <div class="form-group">
-                                    <label for="subirFoto">File input</label>
+                                    <label for="subirFoto">Ingresa Imagenes Op</label>
+                                    <input id="numeroOpFoto" name="numeroOpFoto" type="text" readonly value=""
+                                        class="form-control">
+                                        <input id="OpFoto" name="OpFoto" type="hidden" readonly value="<?php echo $_COOKIE['variable'];?>  "
+                                        class="form-control">
                                     <input type="file" id="subirFoto" class="form-control" name="foto">
                                     <p class="help-block">archivo jpg</p>
                                 </div>
                                 <div class="row box-body m-auto">
                                     <div class="form-group col-4">
-                                        <input class="form-check-input" type="radio" name="radioFoto"
-                                            id="radioFoto1" value="1" checked>
+                                        <input class="form-check-input" type="radio" name="radioFoto" id="radioFoto1"
+                                            value="1" checked>
                                         <label class="form-check-label h6" for="radioFoto1">
-                                       1- <i class="material-icons">&#xe3b6;</i>
+                                            1- <i class="material-icons">&#xe3b6;</i>
                                         </label>
                                     </div>
                                     <div class="form-group col-4">
-                                        <input class="form-check-input" type="radio" name="radioFoto"
-                                            id="radioFoto2" value="2" >
+                                        <input class="form-check-input" type="radio" name="radioFoto" id="radioFoto2"
+                                            value="2">
                                         <label class="form-check-label h6 mr-2" for="radioFoto1">
-                                       2- <i class="material-icons">&#xe3b6;</i>
+                                            2- <i class="material-icons">&#xe3b6;</i>
                                         </label>
                                     </div>
                                     <div class="form-group col-4">
-                                        <input class="form-check-input" type="radio" name="radioFoto"
-                                            id="radioFoto2" value="3" >
+                                        <input class="form-check-input" type="radio" name="radioFoto" id="radioFoto2"
+                                            value="3">
                                         <label class="form-check-label h6" for="radioFoto1">
-                                       3- <i class="material-icons">&#xe3b6;</i>
+                                            3- <i class="material-icons">&#xe3b6;</i>
                                         </label>
                                     </div>
                                 </div>
@@ -111,9 +114,10 @@ require "conexion.php";
             <!--  <---------------------------comienzo de galeria -------------------------------------------->
             <div class="row">
 
-               <?php 
-               $op=$_SESSION['Op'];
-               $num='3';
+                <?php 
+              
+               $op=$_COOKIE['variable'];
+              
                $queryI="SELECT  foto_nombre,foto_posicion FROM tabla_fotos where foto_op = '$op'order by foto_posicion";
                $consultaI=mysqli_query($conexion,$queryI);               
                while ($row = mysqli_fetch_array($consultaI, MYSQLI_ASSOC)) {
@@ -121,20 +125,22 @@ require "conexion.php";
                 ?>
                 <div class="col-4   ">
                     <div class="box p-a-xs">
-                        <figure href="#"><img src="foto/<?php echo $row['foto_nombre'] ?>  " alt="" class="img-responsive" id="<?php echo $row['foto_posicion'].$row['foto_nombre'] ?>  "  ></figure>
+                        <figure href="#"><img src="foto/<?php echo $row['foto_nombre'] ?>  " alt=""
+                                class="img-responsive" id="<?php echo $row['foto_posicion'].$row['foto_nombre'] ?>  ">
+                        </figure>
                         <div class="p-a-sm">
                             <div class="text-ellipsis"><?php echo $row['foto_nombre'] ?></div>
                         </div>
                     </div>
                 </div>
-                
+
                 <?php
                
            }
            
                ?>
-                
-                
+
+
 
             </div>
 
@@ -150,34 +156,54 @@ require "conexion.php";
 
     </div>
     <!-- build:js scripts/app.html.js -->
-       <!-- jQuery -->
-       <script src="../libs/jquery/jquery/dist/jquery.js"></script>
-        <!-- Bootstrap -->
-        <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
-        <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-        <!-- core -->
-        <script src="../libs/jquery/underscore/underscore-min.js"></script>
-        <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
-        <script src="../libs/jquery/PACE/pace.min.js"></script>
+    <!-- jQuery -->
+    <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- core -->
+    <script src="../libs/jquery/underscore/underscore-min.js"></script>
+    <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
+    <script src="../libs/jquery/PACE/pace.min.js"></script>
 
-        <script src="scripts/config.lazyload.js"></script>
+    <script src="scripts/config.lazyload.js"></script>
 
-        <script src="scripts/palette.js"></script>
-        <script src="scripts/ui-load.js"></script>
-        <script src="scripts/ui-jp.js"></script>
-        <script src="scripts/ui-include.js"></script>
-        <script src="scripts/ui-device.js"></script>
-        <script src="scripts/ui-form.js"></script>
-        <script src="scripts/ui-nav.js"></script>
-        <script src="scripts/ui-screenfull.js"></script>
-        <script src="scripts/ui-scroll-to.js"></script>
-        <script src="scripts/ui-toggle-class.js"></script>
+    <script src="scripts/palette.js"></script>
+    <script src="scripts/ui-load.js"></script>
+    <script src="scripts/ui-jp.js"></script>
+    <script src="scripts/ui-include.js"></script>
+    <script src="scripts/ui-device.js"></script>
+    <script src="scripts/ui-form.js"></script>
+    <script src="scripts/ui-nav.js"></script>
+    <script src="scripts/ui-screenfull.js"></script>
+    <script src="scripts/ui-scroll-to.js"></script>
+    <script src="scripts/ui-toggle-class.js"></script>
 
-        <script src="scripts/app.js"></script>
+    <script src="scripts/app.js"></script>
 
-        <!-- ajax -->
-        <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
-        <script src="scripts/ajax.js"></script>
-        <!-- endbuild -->
-    
+    <!-- ajax -->
+    <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
+    <script src="scripts/ajax.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $.ajax(
+
+                {
+                    url: "traerultimaOp.php",
+                    success: function (data) {
+                        $("#numeroOpFoto").val(JSON.parse(data));
+                        document.cookie = "variable = " + data;
+                        /*  console.log('Data from the server' + data); */
+                    },
+                    error: function () {
+                        alert('error en el servidor');
+                    }
+                }
+            );
+        });
+    </script>
+   
+    <!-- endbuild -->
+
 </body>

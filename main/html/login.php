@@ -3,6 +3,7 @@ session_start();
 require 'conexion.php';
 $usuario=$_POST['usuario'];
 $pass=$_POST['pass'];
+setcookie("variable",1000);
 
 $query="SELECT COUNT(*) as contar FROM administrador where usuario = '$usuario' AND pass ='$pass' ";
 $consulta=mysqli_query($conexion,$query);

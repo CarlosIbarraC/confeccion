@@ -1,11 +1,15 @@
 <?php 
 session_start();
+$usuario=$_SESSION['username'];
+if(!isset($usuario)){
+  header("location:login.php");
+};
 setcookie("variable",1000);
 require "conexion.php";
-if(!isset($_POST['numeroOp'])&&!isset($_POST['fecha'])){
+if(!isset($_POST['numeroOp'])&&!isset($_POST['fechaOp'])){
     header("location:formulario.php");  
 }
-$fecha=$_POST['fecha'];
+$fecha=$_POST['fechaOp'];
 $numeroOp=$_POST['numeroOp'];
 $horaE=$_POST['horaE'];
 $horaS=$_POST['horaS'];

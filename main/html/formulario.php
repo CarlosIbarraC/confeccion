@@ -36,7 +36,7 @@ if(!isset($usuario)){
     <link rel="stylesheet" href="../assets/glyphicons/glyphicons.css" type="text/css" />
     <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css" type="text/css" />
     <link rel="stylesheet" href="../assets/material-design-icons/material-design-icons.css" type="text/css" />
-
+   
     <link rel="stylesheet" href="../assets/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
     <!-- build:css ../assets/styles/app.min.css -->
     <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
@@ -78,7 +78,7 @@ if(!isset($usuario)){
 
                                     <div class="form-group col-6 p-0">
                                         <label for="">Fecha</label>
-                                        <input type="date" class="form-control" id="fechaOp" name="fecha" onChange="fechaControl()" required>
+                                        <input type="date" class="form-control" id="fechaOp" name="fechaOp" onchange="fechaControl()"required>
                                     </div>
                                     <div class="form-group col-4 ">
                                         <label for="">OP N°</label>
@@ -86,19 +86,28 @@ if(!isset($usuario)){
                                             value="1000" placeholder="Read Only">
                                     </div>
                                 </div>
+                           
                                 <div class="row box-body">
                                     <div class="form-group col-3 p-0">
                                         <label for="">Hora Entrada</label>
-                                        <input type="time" class="form-control" id="" name="horaE" >
+                                        <input type="time" class="form-control" id="horaE" name="horaE" onchange="horaAjuste()" required>
                                     </div>
                                     <div class="form-group col-3 p-0">
                                         <label for="">Hora Salida</label>
-                                        <input type="time" class="form-control " id="" name="horaS" required>
+                                        <input type="time" class="form-control " id="horaS" name="horaS" onchange="horaControl()" required>
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="exampleInputPassword1">Descanso</label>
-                                        <input type="num" min="1" max="90" class="form-control " iD="" name="descanso"
-                                            placeholder="minutos">
+                                        <input type="num" min="1" max="90" class="form-control " iD="descanso" name="descanso"
+                                            placeholder="minutos" onchange="minTotales()" required>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="row">
+                                        <div class="col-6 ml-4">
+                                            <h6 id="minTotales"></h6>
+                                        </div>
+                                       
                                     </div>
                                 </div>
 
@@ -130,18 +139,26 @@ if(!isset($usuario)){
                                 </div>
                                 <div class="row box-body">
                                     <div class="form-group col-4 p-0">
-                                        <label for="">S.A.M.</label>
-                                        <input type="number" step="0.1" class="form-control " id="" name="sam" required>
+                                        <label for="">S.A.M. (formato ej; 3,32 seg)</label>
+                                        <input type="number" step="0.01" class="form-control " id="sam" name="sam" required placeholder =" formato ej: 3,20 max 60" onchange="validacionSam()">
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="">Expertos</label>
-                                        <input type="number" min="1" max="90" step="1" class="form-control" iD=""
-                                            name="expertos" required>
+                                        <input type="number" min="1" max="90" step="1" class="form-control" id="expertos"
+                                            name="expertos" onchange="unidadesT()" required>
                                     </div>
                                     <div class="form-group col-3 p-0 ml-3">
                                         <label for="">Cantidad</label>
-                                        <input type="number" class="form-control" iD="" name="cantidad"
-                                            placeholder="unidades" required>
+                                        <input type="number" class="form-control"  name="cantidad" id="cantidadOp"
+                                            placeholder="unidades" onchange='xx()' required>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="row">
+                                        <div class="col-6 ml-4">
+                                            <h6 id="cantidadT"></h6>
+                                        </div>
+                                       
                                     </div>
                                 </div>
                                 <div class="row box-body">
@@ -158,7 +175,7 @@ if(!isset($usuario)){
                                     <div class="form-group col-5 col-sm-2 p-0 ml-3">
                                         <label for="">Tallas</label>
                                         <input type="text" class="form-control" iD="" name="tallas"
-                                            placeholder="Minutos">
+                                            placeholder="Minutos" required>
                                     </div>
 
                                 </div>
@@ -214,6 +231,7 @@ if(!isset($usuario)){
         <!-- build:js scripts/app.html.js -->
         <!-- jQuery -->
         <script src="../libs/jquery/jquery/dist/jquery.js"></script>
+        <script src="../js/funciones.js">
         <!-- Bootstrap -->
         <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
         <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
@@ -221,7 +239,7 @@ if(!isset($usuario)){
         <script src="../libs/jquery/underscore/underscore-min.js"></script>
         <script src="../libs/jquery/jQuery-Storage-API/jquery.storageapi.min.js"></script>
         <script src="../libs/jquery/PACE/pace.min.js"></script>
-
+        
         <script src="scripts/config.lazyload.js"></script>
 
         <script src="scripts/palette.js"></script>
@@ -240,7 +258,7 @@ if(!isset($usuario)){
         <!-- ajax -->
         <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
         <script src="scripts/ajax.js"></script>
-        <script src="../js/funciones.js">
+       
 
         </script>
         <script>
@@ -261,13 +279,117 @@ if(!isset($usuario)){
                 );
             });
         </script>
-        <script>
-            $(document).ready(function () {
-                fechaControl();
-                var fecha = new Date();
-                var hoy = fecha.getDay();
-                console.log(hoy);
-            });
+       
+               
+         <script>
+
+             function xx() {
+                $('#cantidadT').text(''); 
+                 var cantidad=parseInt( $('#cantidadOp').val() ) ;
+                 var xx=minTotales()*60/validacionSam()/cantidad;
+                 var yy= 1/xx;
+                 $('#cantidadT').append('Unidades resultantes: '+cantidad).addClass('text-info');
+                 var operarios = Math.round(yy+0.5);
+                console.log("es"+operarios);
+                
+             }
+             
+             function unidadesT() {
+                $('#cantidadT').text('');
+                if(sam == ""){              
+                       $('#sam').focus();
+                       alert("por favor complete S.A.M primero"); 
+                   }
+                   
+                   var expertos=parseInt($('#expertos').val());
+                   var min=minTotales();
+                   var samS=validacionSam();
+                   var Total=Math.trunc(min*expertos/(samS)*60);
+                   console.log(min*expertos/(samS)*60); 
+                   //var minT= min*expertos;
+                   $('#cantidadT').append('Unidades resultantes: '+Total).addClass('text-info'); 
+                   $('#cantidadOp').val(Total) ;
+                    //return Total;
+                   
+                
+               }
+               
+               function minTotales() {
+                $('#minTotales').text(''); 
+               
+                var horaE = $("#horaE").val();
+                var horaS = $("#horaS").val();
+                var horaPE = '2021-10-16'+" "+horaE;
+                var horaPS = '2021-10-16'+" "+horaS;
+                const dateTimeE = new Date(horaPE).getTime();
+                const dateTimeS = new Date(horaPS).getTime();
+                const timestampE = Math.floor(dateTimeE / 1000);
+                const timestampS = Math.floor(dateTimeS / 1000);
+                var diferencia =parseInt(timestampS)-parseInt(timestampE);               
+                var descanso=parseInt($('#descanso').val());
+                var minT=(diferencia/60-descanso); 
+                var horas=Math.trunc(minT/60) ;               
+                var minutos =( minT-horas*60 );           
+                    $('#minTotales').append('Tiempo total en min: '+minT+' en horas: '+horas+':'+minutos).addClass('text-info');  
+                    return minT;    
+               }
+
+
+               function horaControl(){
+                var horaE = $("#horaE").val();
+                var horaS = $("#horaS").val();
+                $('#minTotales').text(''); 
+                $('#descanso').val("");
+                $('#sam').val(""); 
+                $('#expertos').val("");
+                $("#cantidadOp") .val(""); 
+                $('#cantidadT').text('');    
+                if(horaE>=horaS){                    
+                    
+                    alert("hora no valida verifique que hora de entrada sea menor que hora de salida");
+                    $('#horaS').val(0);
+                }
+
+               }
+
+               function horaAjuste() {
+                var horaE = $("#horaE").val();
+                var horaS = $("#horaS").val();
+                $('#minTotales').text('');
+                $('#descanso').val(""); 
+                if (horaS!= " ") {
+                    $("#horaS").val(" ");
+                }
+               }
+
+               function validacionSam() {
+                 var sam=  $('#sam').val();
+                 
+                 if (sam>99) {
+                     alert('numero no valido');
+                     $('#sam').val(" ");
+                     $('#sam').focus();       
+                     
+                 }
+               
+                 var separador=sam.split(".");
+                 if (typeof(separador[1]) === "undefined") {
+                     separador[1]=0;
+                 }
+                 
+                 var segundos=parseInt(separador[0])*60+parseInt(separador[1]);
+                 console.log(segundos);
+                 if(parseInt(separador[1])>60){
+                     alert("numero no valido");
+                     $('#sam').val(" ");
+                 }
+                 return segundos;
+                 
+               }
+               
+               
+                
+         
         </script>
         
         

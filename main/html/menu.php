@@ -49,22 +49,27 @@
                   <small class="text-muted">Components</small>
                 </li>
             
-                <li>       
-                
-                  
-                  <a href="formulario.php">
-                    <!-- <span class="nav-caret">
-                      <i class="fa fa-caret-down"></i>
-                    </span> -->
+                <li>                   
+                  <a href="formulario.php">                   
                     <span class="nav-icon">
                       <i class="material-icons">&#xe39e;
                         <span ui-include="'../assets/images/i_6.svg'"></span>
                       </i>
                     </span>
                     <span class="nav-text">Formulario O.P.</span>
+                  </a>                  
+                 </li>
+                 <li>                   
+                  <a href="listadoOp.php">                   
+                    <span class="nav-icon">
+                      <i class="material-icons">&#xe39e;
+                        <span ui-include="'../assets/images/i_6.svg'"></span>
+                      </i>
+                    </span>
+                    <span class="nav-text">listadoOp</span>
                   </a>
                   
-            
+                 </li>
                 <li>
                   <a>
                     

@@ -26,7 +26,7 @@ $retVal3 = ($_POST['color3']!=="#351717") ? $color3=$_POST['color3'] : $color3="
 $retVal4 = ($_POST['color4']!=="#351717") ? $color4=$_POST['color4'] : $color4="sin select" ;
 $retVal5 = ($_POST['color5']!=="#351717") ? $color5=$_POST['color5'] : $color5="sin select" ;
 $retVal6 = ($_POST['color6']!=="#351717") ? $color6=$_POST['color6'] : $color6="sin select" ;
-
+$notas=$_POST['notas'];
 
 
 

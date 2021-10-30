@@ -101,6 +101,7 @@ if(!isset($usuario)){
                                     <th>Operarios</th>
                                     <th>Unidades</th>
                                     <th>Edicion</th>
+                                    <th>Asignacion</th>
 
 
                                 </tr>
@@ -147,7 +148,45 @@ if(!isset($usuario)){
 
             </div>
         </div>
+         <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
 
+<!-- Modal -->
+<div class="modal fade " id="modalAsignacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content text-green">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Asignacion Op</h5>
+        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body " >
+          <form action="" id="formulario">
+          <input type="text" id="date" class="form-control" readonly>
+              <input type="text" id="opSelect" class="form-control" readonly><br>
+              <select class="form-select form-select-lg mb-3 form-control bg-dark" aria-label=".form-select-lg example" id="selectUsuario">
+              <option selected>seleccione el usuario</option>
+                  <option value="usuario1">usuario1</option>
+                  <option value="usuario2">usuario2</option>
+                  <option value="usuario3">usuario3</option>
+                  <option value="usuario4">usuario4</option>
+                  <option value="usuario5">usuario5</option>
+                  <option value="usuario6">usuario6</option>                  
+                 </select>         
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cerrar</button>
+        
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
         <!-- ############ PAGE END-->
 
     </div>
@@ -192,7 +231,14 @@ if(!isset($usuario)){
     <script src="../libs/jquery/jquery-pjax/jquery.pjax.js"></script>
     <script src="scripts/ajax.js"></script>
     <script src="../js/listarOp.js"></script>
+   <Script>
+  function Activar(date) {
+   //var op = $('#opSelect').val(params);
+   var fecha = $(date).val(date);  
+   console.log(fecha);   
+  }
    
+   </Script>
 </body>
 
 </html>

@@ -1,10 +1,4 @@
 <?php
-$array = array();
-for ($x = 1; $x <= 100000; $x++)
-{
-    $array[] = $x;
-}
-echo $array[];
 ?>
   <div class="operacion p-a">
   <div class="row  p-0 ">

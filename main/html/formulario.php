@@ -290,6 +290,11 @@ if(!isset($usuario)){
                  var yy= 1/xx;
                  $('#cantidadT').append('Unidades resultantes: '+cantidad).addClass('text-info');
                  var operarios = Math.round(yy+0.5);
+                 var sign = prompt("desa aumentar el numero de operarios? y que se recalcule el numero de unidades?",operarios);
+                 if (sign== operarios){
+                    $('#expertos').val(operarios);
+                    unidadesT();
+                 }
                 console.log("es"+operarios);
                 
              }

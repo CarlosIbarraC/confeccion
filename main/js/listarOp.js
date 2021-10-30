@@ -3,7 +3,7 @@ error_box= document.getElementById('error_listar_op'),
 tabla=document.getElementById('tabla_listar_op'),
 loader= document.getElementById('loader');
 
-var Op_numero,
+var mumeroOp,
 referencia,
 estampado,
 fecha,
@@ -12,10 +12,11 @@ Hrf,
 descanso,
 sam,
 operarios,
-unidades;
+unidades,
+asignacion;
 
 function cargarOp() {
-   tabla.innerHTML='<tr><th>Op-numero</th><th>Referencia</th><th>Estampado</th><th>Fecha</th><th>Hr:I</th><th>Hr:F</th><th>Descanso</th><th>S.A.M</th><th>Operarios</th><th>Unidades</th><th>Edicion</th></tr>';
+   tabla.innerHTML='<tr><th>Op-numero</th><th>Referencia</th><th>Estampado</th><th>Fecha</th><th>Hr:I</th><th>Hr:F</th><th>Descanso</th><th>S.A.M</th><th>Operarios</th><th>Unidades</th><th>Edicion</th><th>Asignacion</th></tr>';
    
    var peticion=XMLHttpRequest();
    peticion.open('GET','datosOp.php');
@@ -39,7 +40,9 @@ function cargarOp() {
               elemento.innerHTML += ("<td class='text-danger'>" + datos[i].sam_op + "</td>") ;
               elemento.innerHTML += ("<td>" + datos[i].operarios_op + "</td>") ;
               elemento.innerHTML += ("<td>" + datos[i].unidades_op + "</td>") ;
-              tabla_listar_op.appendChild(elemento)
+              elemento.innerHTML += ("<td> <button class='btn btn-sm btn-success'data-toggle='modal' data-target='#modalAsignacion' onclick='Activar("+ datos[i].date_op +")'>asignar</button> </td>") ;
+              elemento.innerHTML += ("<td>" + datos[i].asignacion + "</td>") ;
+              tabla_listar_op.appendChild(elemento);
              
           }
       }
@@ -54,6 +57,50 @@ peticion.send();
 
 }
 
+function agregarUsuario(e) {
+    e.preventDefault();
+    numeroOp = $('#opSelect').val();
+    asignacion =$('#selectUsuario').val();
+    date_op=$('#opDate').val();
+    $.ajax({
+        method: "POST",
+        url: "insertarAsignacion.php",
+        data: { numeroOp: numeroOp, asignacion: asignacion,date_op:date_op }
+      })
+        .done(function( msg ) {
+            alert(msg);
+            cargarOp();
+            $('#modalAsignacion').modal('toggle'); 
+        });
+    /* var peticion = new XMLHttpRequest();
+    peticion.open('POST','insertarAsignacion.php');
+    mumeroOp = $('#opSelect').val();
+    asignacion =$('#selectUsuario').val(); 
+    if(asignacion=="seleccione el usuario"){
+        alert("seleccione usuario");
+        return;
+    }
+    var data= 'mumeroOp='+mumeroOp+'&asignacion='+asignacion;
+    peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    loader.classList.add('active');
+    peticion.send(data);
+    peticion.onload = function () {
+        if(peticion.readyState == 4 && peticion.status == 200){
+            loader.classList.remove('active');
+            cargarOp();
+        }
+    } */
+     
+}
+
 btn_cargar.addEventListener('click',function () {
     cargarOp();
 });
+
+formulario.addEventListener('submit',function (e){
+    agregarUsuario(e);
+
+    /* console.log(Op_numero);
+    console.log($('#selectUsuario').val()); */
+});
+

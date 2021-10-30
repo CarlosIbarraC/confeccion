@@ -2,12 +2,13 @@
 error_reporting(0);
 header('Content-Type: application/json; charset=utf-8;');
 require "conexion.php";
+$op=$_POST['numop'];
 if($conexion->connect_error){
     $respuesta =  [
         'error'=> true
     ];
 }else{
-$sqlOp="SELECT * FROM `registroop` ORDER BY `date_op` DESC";
+$sqlOp="SELECT * FROM `registroop` WHERE `op_num` ='$op'";
 $consulta=mysqli_query($conexion,$sqlOp);
 $respuesta =[];
 
@@ -31,8 +32,7 @@ while($array=$consulta->fetch_assoc()){
         'color4_op'   => $array['color4_op'],
         'color5_op'   => $array['color5_op'],
         'color6_op'   => $array['color6_op'],
-        'notas_op'   => $array['notas_op'],
-        'asignacion'   => $array['asignacion']
+        'notas_op'   => $array['notas_op']
         
     ];
     array_push($respuesta,$usuario);    

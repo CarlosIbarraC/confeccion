@@ -81,7 +81,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
             </div>
             <div class="clear">
               <h4 class="m-0 text-md _300">
-                <p>O.P :<span class="text-lg text-info">1536</span></p>
+                <input type=text onchange="llenarOp(1006)">O.P :<span class="text-lg text-info" >1536</span></input>
               </h4>
 
             </div>
@@ -95,7 +95,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
 
             </div>
             <div class="clear">
-              <p class="text-md">Estampado: <span class="text-sm text-warn" id="ref1">T-shirt 1233</span></p>
+              <p class="text-md">Estampado: <span class="text-sm text-warn" id="Estampado">--</span></p>
 
             </div>
 
@@ -109,7 +109,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
 
             </div>
             <div class="clear">
-              <p class="text-md">Ref : <span class="text-sm text-warn" id="ref1">T-shirt 1233</span></p>
+              <p class="text-md">Ref : <span class="text-sm text-warn" id="Referencia">--</span></p>
 
             </div>
 
@@ -141,7 +141,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
 
               </div>
               <div class="clear">
-                <h4 class="m-0 text-xs _300">S.A.M: <small class="text-sm">6:32</small></h4>
+                <h4 class="m-0 text-xs _300" id="sam">S.A.M: </h4>
 
               </div>
             </div>
@@ -328,6 +328,33 @@ if((!isset($usuario))&&(!isset($supervisor))){
         }
       })
 
+    }
+  </script>
+  <script>
+    function llenarOp(op) {
+      
+
+      cadena = "numop=" + op;
+
+      
+      $.ajax({
+        type: "POST",
+        url: "Traerop.php",
+        data: cadena,
+        success: function (data) {
+          if (data) {
+            $('#sam').text("S.A.M: "+data[0].sam_op);
+            $('#Referencia').text(data[0].referencia_op);
+            $('#Estampado').text(data[0].estampado_op);
+            console.log(data[0].sam_op);
+
+          } else {
+
+            console.log('fallo en el servidor');
+          }
+        }
+      })
+      
     }
   </script>
 </body>

@@ -40,7 +40,7 @@ function cargarOp() {
               elemento.innerHTML += ("<td class='text-danger'>" + datos[i].sam_op + "</td>") ;
               elemento.innerHTML += ("<td>" + datos[i].operarios_op + "</td>") ;
               elemento.innerHTML += ("<td>" + datos[i].unidades_op + "</td>") ;
-              elemento.innerHTML += ("<td> <button class='btn btn-sm btn-success'data-toggle='modal' data-target='#modalAsignacion' onclick='Activar("+ datos[i].date_op +")'>asignar</button> </td>") ;
+              elemento.innerHTML += ("<td> <button class='btn btn-sm btn-success'data-toggle='modal' data-target='#modalAsignacion' onclick='Activar("+ datos[i].op_num +")'>asignar</button> </td>") ;
               elemento.innerHTML += ("<td>" + datos[i].asignacion + "</td>") ;
               tabla_listar_op.appendChild(elemento);
              
@@ -61,11 +61,11 @@ function agregarUsuario(e) {
     e.preventDefault();
     numeroOp = $('#opSelect').val();
     asignacion =$('#selectUsuario').val();
-    date_op=$('#opDate').val();
+   // date_op=$('#opDate').val();
     $.ajax({
         method: "POST",
         url: "insertarAsignacion.php",
-        data: { numeroOp: numeroOp, asignacion: asignacion,date_op:date_op }
+        data: { numeroOp: numeroOp, asignacion: asignacion}
       })
         .done(function( msg ) {
             alert(msg);

@@ -165,8 +165,8 @@ if(!isset($usuario)){
       </div>
       <div class="modal-body " >
           <form action="" id="formulario">
-          <input type="text" id="date" class="form-control" readonly>
-              <input type="text" id="opSelect" class="form-control" readonly><br>
+          
+              <input type="text" id="opSelect" class="form-control"  readonly><br>
               <select class="form-select form-select-lg mb-3 form-control bg-dark" aria-label=".form-select-lg example" id="selectUsuario">
               <option selected>seleccione el usuario</option>
                   <option value="usuario1">usuario1</option>
@@ -232,10 +232,10 @@ if(!isset($usuario)){
     <script src="scripts/ajax.js"></script>
     <script src="../js/listarOp.js"></script>
    <Script>
-  function Activar(date) {
-   //var op = $('#opSelect').val(params);
-   var fecha = $(date).val(date);  
-   console.log(fecha);   
+  function Activar(params) {
+   var op = $('#opSelect').val(params);
+  // var fecha = $(date).val(date);  
+   //console.log(fecha);   
   }
    
    </Script>

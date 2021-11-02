@@ -10,20 +10,44 @@ require "conexion.php";
 };
 $numeroOP=$_POST['numeroOp'];
 $asignacion=$_POST['asignacion'];
-$date=$_POST['date_op'];
-$verificacion="SELECT `date_op`,`asignacion` FROM `registroop` WHERE `date_op` = '$date' AND `asignacion` = '$asignacion'";
 
-$consultaC=mysqli_query($conexion,$verificacion);
-            $array= mysqli_num_rows($consultaC);
+
+    $sql="UPDATE `registroop` SET`asignacion`='$asignacion',`verificacion`= CONCAT (`asignacion`,`date_op`) where `op_num` = '$numeroOP'";
+    $consulta=mysqli_query($conexion,$sql);
+    
+    $sqlOp="SELECT `verificacion` FROM  `registroop` where `op_num`= '$numeroOP'";
+    $consulta=mysqli_query($conexion,$sqlOp);
+    $respuesta =[];
+
+while($array=$consulta->fetch_assoc()){
+    $usuario = [
+        'verificacion'    => $array['verificacion'],
+        
+       
+        
+    ];
+    array_push($respuesta,$usuario);    
+}
+
+
+
+
+
+    //echo $asignacion;
+  
+  /*  $sqlr="SELECT `verificacion` FROM  `registroop` where `op_num`= '$numeroOP'";
+   $consultaf=mysqli_query($conexion,$sqlr);
+   if (!$consultaf) {
+    $sqlV="UPDATE `registroop` SET`asignacion`='NULL' Where  `op_num` = '$numeroOP' ";
+    $consultaV=mysqli_query($conexion,$sqlV);
+    echo "no asignado"; 
+   }else{  while ($verf=mysql_fetch_assoc($consultaV)) {
+        echo $verf['verificacion'];
+     }    
+   }; */
+  
+   
+
             
-            if ($array>0) {
-                echo $asignacion; 
-            }else{
-                $sql="UPDATE `registroop` SET`asignacion`='$asignacion'where `op_num` = '$numeroOP'";
-                $consulta=mysqli_query($conexion,$sql);
-                echo $date;
-                
-            }
-
 
 ?>

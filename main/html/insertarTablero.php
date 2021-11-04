@@ -2,12 +2,13 @@
 error_reporting(0);
 header('Content-Type: application/json; charset=utf-8;');
 require "conexion.php";
+$usuario= $_POST['supervisor'];
 if($conexion->connect_error){
     $respuesta =  [
         'error'=> true
     ];
 }else{
-$sqlOp="SELECT * FROM `registroop` ORDER BY `date_op` DESC";
+$sqlOp="SELECT * FROM `registroop` WHERE `asignacion`='$usuario' ";
 $consulta=mysqli_query($conexion,$sqlOp);
 $respuesta =[];
 
@@ -43,3 +44,4 @@ while($array=$consulta->fetch_assoc()){
 
 echo json_encode($respuesta);
 ?>
+

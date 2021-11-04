@@ -72,24 +72,7 @@ function agregarUsuario(e) {
             cargarOp();
             $('#modalAsignacion').modal('toggle'); 
         });
-    /* var peticion = new XMLHttpRequest();
-    peticion.open('POST','insertarAsignacion.php');
-    mumeroOp = $('#opSelect').val();
-    asignacion =$('#selectUsuario').val(); 
-    if(asignacion=="seleccione el usuario"){
-        alert("seleccione usuario");
-        return;
-    }
-    var data= 'mumeroOp='+mumeroOp+'&asignacion='+asignacion;
-    peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    loader.classList.add('active');
-    peticion.send(data);
-    peticion.onload = function () {
-        if(peticion.readyState == 4 && peticion.status == 200){
-            loader.classList.remove('active');
-            cargarOp();
-        }
-    } */
+   
      
 }
 

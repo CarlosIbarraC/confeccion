@@ -39,14 +39,22 @@ if($arraySesion['sesion'] == 'abierto'){
      $arrayS= mysqli_fetch_array($consultaS);
      $arrayS['contars'];
      if($arrayS['contars']>0){
-      $_SESSION['usernameS']=$usuario;  
-     header('Location: dashboard.php');
-      }else{
-      $_SESSION['login']="datos incorrectos";
-     header('Location: index.php');
-      }
-   
-   
+           switch ($usuario) {
+              case 'usuario1':
+               $_SESSION['usernameS']=$usuario;  
+               header('Location: dashboard1.php');
+                 break;
+
+              case 'usuario2':
+                  $_SESSION['usernameS2']=$usuario;  
+                  header('Location: dashboard2.php');
+                    break;  
+              
+              default:
+              $_SESSION['login']="datos incorrectos";
+              header('Location: index.php');
+                 break;
+           } ;
    
    
    }else{
@@ -54,10 +62,9 @@ if($arraySesion['sesion'] == 'abierto'){
      header('Location: index.php');
    }
    
+};
 }
-
-
+?>
  
 
 
-?>

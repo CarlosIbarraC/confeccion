@@ -6,14 +6,14 @@ $supervisor=$_SESSION['usernameS2'];
 if((!isset($usuario))&&(!isset($supervisor))){
   header("location:index.php"); 
 }
-
+$ip= $_SERVER['HTTP_CLIENT_IP'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <title>Confeccion Programa de Carlos Ibarra C</title>
+  <title>dashboard2</title>
   <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +68,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
       <div class="row">
         <div class="col-5">
           <h4 class="mb-0 text-md">Bienvenido a Confeccion I</h4>
-          <small class="text-muted">Control <strong>I</strong> Produccion en linea</small>
+          <small class="text-muted">Control <strong>I  </strong> Produccion en linea</small>
 
         </div>
         <div class="col-4">
@@ -322,18 +322,26 @@ if((!isset($usuario))&&(!isset($supervisor))){
       });
 
 
-      var acumulado = 0;
+     
 
       function ing() {
 
-        acumulado = acumulado + 1;
-
-
-        txt = document.getElementById("suma");
-
-        console.log(txt.innerHTML = acumulado);
-
-        return acumulado;
+        
+       
+        console.log($('#tablero2-OP').text());
+        var numeroOp=$('#tablero2-OP').text();
+        $.ajax({
+          method: "POST",
+          url: "insertarValoresOK.php",
+          data: { numeroOp: numeroOp} 
+        })
+        .done(function( msg ) {
+         
+          txt = document.getElementById("suma");
+          console.log(txt.innerHTML = msg);
+          
+        });
+        
       }
     </script>
 

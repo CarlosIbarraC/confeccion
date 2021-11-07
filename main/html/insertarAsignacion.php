@@ -12,9 +12,11 @@ $numeroOP=$_POST['numeroOp'];
 $asignacion=$_POST['asignacion'];
 
     $sql="UPDATE `registroop` SET`asignacion`='$asignacion',`verificacion`= CONCAT (`asignacion`,`date_op`) where `op_num` = '$numeroOP'";
-    $consulta=mysqli_query($conexion,$sql);  
+    $consulta=mysqli_query($conexion,$sql);    
+    $sqlC="INSERT INTO `datosop`( `op_numero`) VALUES ('$numeroOP')";
+    $consultaC=mysqli_query($conexion,$sqlC);
     if(!isset($consulta)){
-        echo "tres";
+        echo "falla en comunicacion no se realizo el proceso";
     }else{
         echo"ok";
     }

@@ -17,4 +17,20 @@ function imagenes ($posicion,$op){
 }
 };
 
+function ValoracionUsuario($usuario,$date){
+  require "conexion.php";
+  
+  if($conexion->connect_error){
+      $respuesta =  [
+          'error'=> true
+      ];
+  }else{
+  $sqlOp="SELECT * FROM `registroop` WHERE `asignacion`='$usuario' AND `date_op`= '$date' ";
+  $consulta=mysqli_query($conexion,$sqlOp);
+  
+
+  return $consulta;
+
+}
+}
 ?>    

@@ -1,10 +1,15 @@
 <?php 
 session_start();
+
 if(isset($_SESSION['login'])){
   session_destroy();
   $login="datos Incorrectos";
 }else{
-  $login="";
+  $login="no estas inscrito";
+}
+if(isset($_GET['estado'])){
+  $login="lo sentimos no estas listado";
+  $GET['estado']=" ";
 }
 
 ?>

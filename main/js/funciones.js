@@ -9,9 +9,7 @@ function  fechaControl(){
      n = "0"+dia.toString();
    }else{
       n=dia;
-   }
-   
-   
+   }   
    const hoyFormato=hoy.getFullYear()+"-"+(parseInt(hoy.getMonth())+1)+"-"+n;
    console.log(fecha);
    console.log(hoyFormato);
@@ -44,22 +42,22 @@ function  fechaControl(){
 
     
     function agregarOP(supervisor) {      
-      
-     // date_op=$('#opDate').val();
+     
+    
       $.ajax({
           method: "POST",
           url: "insertarTablero.php",
           data: { supervisor: supervisor}
         })
           .done(function( msg ) {
-                  
-              console.log(msg['0'].op_num);
-              var tableroOP=msg['0'].op_num;
+              console.log(msg);
+              var tableroOP=msg['0'].op_num;             
               var referencia=msg['0'].referencia_op;
               var unidades=msg['0'].unidades_op;
               var estampado=msg['0'].estampado_op;
               var operarios=msg['0'].operarios_op;
               var asignacion=msg['0'].asignacion;
+              var n=  asignacion.charAt(asignacion.length-1);
               var sam=msg['0'].sam_op;
               var horae=msg['0'].horae_op;
               horae=horae.slice(0,5);
@@ -77,26 +75,35 @@ function  fechaControl(){
                 const timestampE = Math.floor(dateTimeE / 1000);
                 const timestampS = Math.floor(dateTimeS / 1000);
                 var diferencia=timestampS-timestampE;             
-                var minT=(diferencia/60-descanso);
-                console.log(minT);
+                var minT=(diferencia/60-descanso);                
                 var TxExp=minT;
                 var uxHora=(unidades/minT*60).toFixed();
-                var MxExp=minT/operarios;
-              $('#tablero'+2+'-OP').text(tableroOP);
-              $('#Referencia'+2).text(referencia);
-              $('#Estampado'+2).text(estampado);
-              $('#Unidades'+2).text(unidades);
-              $('#Sam'+2).text(sam);
-              $('#TxExp'+2).text(TxExp);
-              $('#UxHora'+2).text(uxHora);
-              $('#MxExp'+2).text(MxExp);
-              $('#horaI'+2).text(horae);
-              $('#horaS'+2).text(horas);
-              $('#descanso'+2).text(descanso+" min");
-              $('#operarios'+2).text(operarios );
-              $('#Usuario'+2).text(asignacion );
+                var MxExp=Math.floor(minT/operarios);
+              $('#tablero'+n+'-OP').text(tableroOP);             
+              $('#Referencia'+n).text(referencia);
+              $('#Estampado'+n).text(estampado);
+              $('#Unidades'+n).text(unidades);
+              $('#Sam'+n).text(sam);
+              $('#TxExp'+n).text(TxExp);
+              $('#UxHora'+n).text(uxHora);
+              $('#MxExp'+n).text(MxExp);
+              $('#horaI'+n).text(horae);
+              $('#horaS'+n).text(horas);
+              $('#descanso'+n).text(descanso+" min");
+              $('#operarios'+n).text(operarios );
+              $('#Usuario'+n).text(asignacion );
+
+           
+               
+           
+             
+             
           });
      
        
   } 
+
+  
+
+ 
   

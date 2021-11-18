@@ -89,7 +89,6 @@ if(!isset($usuario)){
                         <table class="table table-striped b-t" id="tabla_listar_op">
                             <thead>
                                 <tr>
-
                                     <th>Op-numero</th>
                                     <th>Referencia</th>
                                     <th>Estampado</th>
@@ -102,8 +101,6 @@ if(!isset($usuario)){
                                     <th>Unidades</th>
                                     <th>Edicion</th>
                                     <th>Asignacion</th>
-
-
                                 </tr>
                             </thead>
                             <tbody>
@@ -165,7 +162,7 @@ if(!isset($usuario)){
       </div>
       <div class="modal-body " >
           <form action="" id="formulario">
-          
+         
               <input type="text" id="opSelect" class="form-control"  readonly><br>
               <select class="form-select form-select-lg mb-3 form-control bg-dark" aria-label=".form-select-lg example" id="selectUsuario">
               <option selected>seleccione el usuario</option>
@@ -233,9 +230,8 @@ if(!isset($usuario)){
     <script src="../js/listarOp.js"></script>
    <Script>
   function Activar(params) {
-   var op = $('#opSelect').val(params);
-  // var fecha = $(date).val(date);  
-   //console.log(fecha);   
+   var op = $('#opSelect').val(params);  
+  
   }
    
    </Script>

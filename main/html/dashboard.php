@@ -52,7 +52,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
 
 <body>
   <div class="app" id="app">
-
+     
     <?php 
  if(!isset($supervisor)){
   require('menu.php');

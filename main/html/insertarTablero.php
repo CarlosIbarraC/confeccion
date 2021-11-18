@@ -2,14 +2,20 @@
 error_reporting(0);
 header('Content-Type: application/json; charset=utf-8;');
 require "conexion.php";
+
 $usuario= $_POST['supervisor'];
+//$date= date(Y)."-".date(m)."-".date(d);
+$date= date("Y-m-d");
+//print_r(date);
+$date;
 if($conexion->connect_error){
     $respuesta =  [
         'error'=> true
     ];
 }else{
-$sqlOp="SELECT * FROM `registroop` WHERE `asignacion`='$usuario' ";
+$sqlOp="SELECT * FROM `registroop` WHERE `asignacion`='$usuario' AND `date_op`= '$date' ";
 $consulta=mysqli_query($conexion,$sqlOp);
+
 $respuesta =[];
 
 while($array=$consulta->fetch_assoc()){

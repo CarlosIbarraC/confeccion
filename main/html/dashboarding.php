@@ -56,7 +56,12 @@ if((!isset($usuario))&&(!isset($supervisor))){
         <div class="col-sm-6">
           <h4 class="mb-0 _300">Bienvenido a Confeccion I</h4>
           <small class="text-muted">Control <strong>I</strong> Produccion en linea</small>
-
+          <a href="" onClick="recargar()">
+            <button class="m-2 btn 
+            btn-warning text-dark btn-md" >recargar
+            </button>
+          </a>
+         
         </div>
 
         <div class="col-sm-6 text-sm-right">
@@ -64,6 +69,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
             <a data-toggle="modal" data-target="#aside" class="hidden-lg-up mr-3">
               <i class="material-icons">&#xe5d2;</i>
             </a>
+            
 
           </div>
         </div>
@@ -71,185 +77,196 @@ if((!isset($usuario))&&(!isset($supervisor))){
     </div>
     <div class="col-12 p-a">
       <div class="box">
-        <div class="box-header">
+        <div class="box-header cyan-800">
           <h3>Cuadro de Rendimiento Total <span id="fechaC" class="ml-2 text-warn"> </span></h3>
         </div>
         <table class="table table-responsive table-striped">
-          <thead>
-            <tr class="text-xs text-primary">
+          <thead >
+            <tr class="text-xs text-primary ">
               <th></th>
-              <th style="width:20%;"><span>O.P./SAM</span></th>
-              <th style="width:30%;"><span>Ref / Estp </span></th>
-              <th style="width:20%;" class="text-left">Eficiencia</th>
-              <th style="width:20%;">Und./Prod</th>              
-              <th style="width:15%;">N.C.</th>                    
-              <th style="width:15%;">Otras</th>  
+              <th style="width:15%;"  class="text-center"><span>O.P./SAM</span></th>
+              <th style="width:20%;" class="text-center"><span>Ref / Estp </span></th>
+              <th style="width:15%;" class="text-center" >Efic. / Avance</th>
+              <th style="width:15%;" class="text-center">Und./Prod</th>              
+              <th style="width:15%;" class="text-center">N.C. / %</th>                    
+              <th style="width:15%;" class="text-center">Otras / %</th>  
             </tr>
           </thead>
-          <tbody>
+          <tbody class="text-center">
             
             <tr class="text-success">
             <td>
-              <span class="w-32 rounded  indigo-300 avatar ">
-                <span>1</span> <i class="on  bottom ">
+              <span class="w-40 rounded  blue-400 avatar ">
+                <span id="asig0">-</span> <i class="on  bottom ">
               </span>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>1002</div></span><br> <span class="text-accent ">3.25</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="opnum0">--</div></span><br> <span class="text-accent " id="Sam0">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>capri-21</div></span><br> <span class="text-accent ">mask-56</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="ref0">--</div></span><br> <span class="text-accent " id="est0">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div>--</div></span><br> <span class="text-accent " id="AcPorcentaje0">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Und0">--</div></span><br> <span class="text-sm text-accent " id="Prod0">--</span></h5>
               </td>
               
               <td class="text-success">
-              <h5 class=" text-xs"><span class="mb-1"><div>1423</div></span><br> <span class="text-accent ">221</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Nc0">--</div></span><br> <span class="text-accent " id="NcPorcentaje0">--</span></h5>
               </td>
               <td class="text-success">
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Otras0">--</div></span><br> <span class="text-accent " id="Oporcentaje0">--</span></h5>
               </td>
               
             </tr>
             <tr>
               <td>
-              <span class="w-32 rounded  indigo-300">
-                2
+              <span class="w-40 rounded  light-green-400" id="asig1">
+                -
               </span>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1 "><div>1002</div></span><br> <span class="text-accent ">3.25</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="opnum1">--</div></span><br> <span class="text-accent " id="Sam1">--</span></h5>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>capri-21</div></span><br> <span class="text-accent ">mask-56</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="ref1">--</div></span><br> <span class="text-accent " id="est1">--</span></h5>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div>--</div></span><br> <span class="text-accent " id="AcPorcentaje1">--</span></h5>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Und1">--</div></span><br> <span class="text-accent" id="Prod1">--</span></h5>
               </td>
               
               <td class="text-success">
-              <h5 class="text-info text-xs"><span class="mb-1"><div>1423</div></span><br> <span class="text-accent ">221</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Nc1">--</div></span><br> <span class="text-accent " id="NcPorcentaje1">--</span></h5>
               </td>
               <td class="text-success">
-              <h5 class="text-info text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Otras1">--</div></span><br> <span class="text-accent " id="Oporcentaje1">--</span></h5>
               </td>
               
             </tr>
             <tr class="text-success">
               <td>
-              <span class="w-32 rounded  indigo-300">
-                3
+              <span class="w-40 rounded  deep-purple-200" id="asig2">
+                -
               </span>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>1002</div></span><br> <span class="text-accent ">3.25</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="opnum2">--</div></span><br> <span class="text-accent " id="Sam2">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>capri-21</div></span><br> <span class="text-accent ">mask-56</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="ref2">--</div></span><br> <span class="text-accent " id="est2">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div>--</div></span><br> <span class="text-accent " id="AcPorcentaje2">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Und2">--</div></span><br> <span class="text-sm text-accent " id="Prod2">--</span></h5>
               </td>
               
-              <td >
-              <h5 class=" text-xs"><span class="mb-1"><div>1423</div></span><br> <span class="text-accent ">221</span></h5>
+              <td class="text-success">
+              <h5 class=" text-xs"><span class="mb-1"><div id="Nc2">--</div></span><br> <span class="text-accent " id="NcPorcentaje2">--</span></h5>
               </td>
-              <td >
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <td class="text-success">
+              <h5 class=" text-xs"><span class="mb-1"><div id="Otras2">--</div></span><br> <span class="text-accent " id="Oporcentaje2">--</span></h5>
               </td>
               
             </tr>
             <tr>
               <td>
-              <span class="w-32 rounded  indigo-300">
-                4
+              <span class="w-40 rounded  grey-500" id="asig3">
+               -
               </span>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>1002</div></span><br> <span class="text-accent ">3.25</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="opnum3">--</div></span><br> <span class="text-accent " id="Sam3">--</span></h5>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>capri-21</div></span><br> <span class="text-accent ">mask-56</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="ref3">--</div></span><br> <span class="text-accent " id="est3">--</span></h5>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div>--</div></span><br> <span class="text-accent " id="AcPorcentaje3">--</span></h5>
               </td>
               <td>
-              <h5 class="text-info text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Und3">--</div></span><br> <span class="text-accent" id="Prod3">--</span></h5>
               </td>
               
               <td class="text-success">
-              <h5 class="text-info text-xs"><span class="mb-1"><div>1423</div></span><br> <span class="text-accent ">221</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Nc3">--</div></span><br> <span class="text-accent " id="NcPorcentaje3">--</span></h5>
               </td>
               <td class="text-success">
-              <h5 class="text-info text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Otras3">--</div></span><br> <span class="text-accent " id="Oporcentaje3">--</span></h5>
               </td>
               
             </tr>
             <tr class="text-success">
               <td>
-              <span class="w-32 rounded  indigo-300 avatar ">
-                <span>5</span> <i class="on  bottom ">
+              <span class="w-40 rounded  yellow-300 avatar" id="asig4">
+                <span>-</span> <i class="on  bottom ">
               </span>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1 "><div>1002</div></span><br> <span class="text-accent ">3.25</span></h5>
+              <h5 class=" text-xs"><span class="mb-1 "><div id="opnum4">--</div></span><br> <span class="text-accent "id="Sam4">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>capri-21</div></span><br> <span class="text-accent ">mask-56</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="ref4">--</div></span><br> <span class="text-accent " id="est4">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div>--</div></span><br> <span class="text-accent" id="AcPorcentaje4">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Und4">--</div></span><br> <span class="text-accent " id="Prod4">--</span></h5>
               </td>
               
               <td class="text-success">
-              <h5 class=" text-xs"><span class="mb-1"><div>1423</div></span><br> <span class="text-accent ">221</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Nc4">--</div></span><br> <span class="text-accent " id="NcPorcentaje4">--</span></h5>
               </td>
               <td class="text-success">
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class=" text-xs"><span class="mb-1"><div id="Otras4">--</div></span><br> <span class="text-accent " id="Oporcentaje4">--</span></h5>
               </td>
               
             </tr>
             <tr class="text-info">
-              <td>
-              <span class="w-32 rounded  indigo-300">
-                6
+            <td>
+              <span class="w-40 rounded  pink-300" id="asig5">
+               -
               </span>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>1002</div></span><br> <span class="text-accent ">3.25</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="opnum5">--</div></span><br> <span class="text-accent " id="Sam5">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>capri-21</div></span><br> <span class="text-accent ">mask-56</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="ref5">--</div></span><br> <span class="text-accent " id="est5">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div>--</div></span><br> <span class="text-accent " id="AcPorcentaje5">--</span></h5>
               </td>
               <td>
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Und5">--</div></span><br> <span class="text-accent" id="Prod5">--</span></h5>
               </td>
               
-              <td >
-              <h5 class=" text-xs"><span class="mb-1"><div>1423</div></span><br> <span class="text-accent ">221</span></h5>
+              <td class="text-success">
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Nc5">--</div></span><br> <span class="text-accent " id="NcPorcentaje5">--</span></h5>
               </td>
-              <td >
-              <h5 class=" text-xs"><span class="mb-1"><div>12</div></span><br> <span class="text-accent ">2.1%</span></h5>
+              <td class="text-success">
+              <h5 class="text-info text-xs"><span class="mb-1"><div id="Otras5">--</div></span><br> <span class="text-accent " id="Oporcentaje5">--</span></h5>
               </td>
               
             </tr>
+            <tfoot  >
+              <tr class="text-primary text-center" >
+              <th class="text-center"><div>TOTALES</div><div class="text-accent">Promedio</div></th>
+                <th class="text-center">--</th>
+                <th class="text-center">--</th>
+                <th class="text-center"><div>--</div><div id="TporAcum" class="text-accent"></div></th>
+                <th class="text-center" ><div  id="totalUnidades" ></div><div class="text-accent"  id="totalAcumu">--</div></th>
+                <th class="text-center"><div id="TANc">--</div><div class="text-accent" id="TporNc">--</div></th>
+                <th class="text-center"><div id="TAcOtras">--</div><div class="text-accent" id="TPAcOtras">--</div></th>
+              </tr>
+            </tfoot>
 
           </tbody>
         </table>
@@ -289,11 +306,17 @@ if((!isset($usuario))&&(!isset($supervisor))){
   <!-- endbuild -->
 
   <script>
+    //window.open(llenarCuadroPrincipal());
      $(document).ready(function () {
+      setTimeout(llenarCuadroPrincipal(), 500);
           fechaHoy();
           setInterval('llenarCuadroPrincipal()',2000);
          
         });
+    function recargar(){
+      location.reload();
+    }
+
     function fechaHoy() {
           var fecha =new Date();
           
@@ -332,19 +355,56 @@ if((!isset($usuario))&&(!isset($supervisor))){
     function llenarCuadroPrincipal() {
 
      
-
-      
+     var AcumUnidades=0;
+     var AcumTotales=0;
+     var PorAcumulado=0;
+     var PorAcNc=0;
+     var AcuOtras=0;
+     var TotalNc=0; 
       $.ajax({
         method: "GET",
         url: "TraerCuadroMain.php",        
         success: function (data) {
           if (data) {
              for (let index = 0; index < data.length; index++) {
-               const element1 = data[index].op_num;
-               const element2 = data[index].sam_op;
-               const element3 = data[index].referencia_op;
-               const element4 = data[index].estampado_op;
-               console.log(element1,element2,element3,element4);
+               const element0 = data[index].asignacion;
+               var unidades=parseInt(data[index].unidades_op);
+               var asignacion= element0.charAt(element0.length-1);
+               var Acumulado=parseInt(data[index].acumulado_op);
+               var Otras=parseInt(data[index].rotas)+parseInt(data[index].SinConfeccion)+parseInt(data[index].segundas);
+               var EfcOtras=(Otras/unidades*100).toFixed(2);
+               var AcPorcentaje=(Acumulado/unidades*100).toFixed(2);
+               var NcPorcentaje =(parseInt(data[index].noConforme)/unidades*100).toFixed(2);
+               var largo=data.length;
+               TotalNc=parseInt(data[index].noConforme)+TotalNc
+               $("#asig"+index).text('U.'+asignacion);
+               $("#opnum"+index).text(data[index].op_num);
+               $("#Sam"+index).text(data[index].sam_op);
+               $("#ref"+index).text(data[index].referencia_op);
+               $("#est"+index).text(data[index].estampado_op);
+               $("#Und"+index).text(unidades);
+               $("#Prod"+index).text(data[index].acumulado_op);
+               $("#Nc"+index).text(data[index].noConforme);
+               $("#Otras"+index).text(Otras);
+               $("#Oporcentaje"+index).text(EfcOtras+" %");
+               $("#AcPorcentaje"+index).text(AcPorcentaje+" %");
+               $("#NcPorcentaje"+index).text(NcPorcentaje+" %");
+               AcumUnidades=Acumulado+AcumUnidades;
+               AcumTotales=unidades+AcumTotales;
+               PorAcumulado=(parseFloat(AcPorcentaje)+PorAcumulado);
+               porAcumPro=(PorAcumulado/largo).toFixed(2);
+               PorAcNc=(parseFloat(NcPorcentaje)+PorAcNc);
+               ResPorAcNc=(PorAcNc/largo).toFixed(2);
+               AcuOtras=Otras+AcuOtras;
+               PorOtras=(AcuOtras/AcumTotales*100).toFixed(2);
+               $("#totalAcumu").text(AcumUnidades);
+               $("#totalUnidades").text(AcumTotales);
+               $("#TporAcum").text(porAcumPro+" %");
+               $("#TporNc").text(ResPorAcNc+" %");
+               $("#TANc").text(TotalNc);
+               $("#TAcOtras").text(AcuOtras);
+               $("#TPAcOtras").text(PorOtras+" %");
+              
              }
             
 
@@ -356,11 +416,7 @@ if((!isset($usuario))&&(!isset($supervisor))){
       });
       
     }
+   
   </script>
 </body>
 
-</html>
-<!-- SELECT sam_op,unidades_op,op_num,
-FROM registroop
-INNER JOIN datosop
-ON registroop.op_num=datosop.op_numero; -->

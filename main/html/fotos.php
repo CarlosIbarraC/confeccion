@@ -45,10 +45,10 @@ require "conexion.php";
 
 <body>
     <div class="app" id="app">
-        <?php require('menu.php'); ?>
-
+    <?php require('menu.php'); ?>
+<!--  -->
         <div class="padding">
-
+      
             <div class="row ">
                 <div class="col-md-6 m-auto">
                     <div class="box">
@@ -68,7 +68,7 @@ require "conexion.php";
 
                             <form method="post" enctype="multipart/form-data" action="subirFoto.php">
                                 <div class="form-group">
-                                    <label for="subirFoto">Ingresa Imagenes Op</label>
+                                    <label for="numeroOpFoto">Ingresa Imagenes Op</label>
                                     <input id="numeroOpFoto" name="numeroOpFoto" type="text" readonly value=""
                                         class="form-control">
                                         <input id="OpFoto" name="OpFoto" type="hidden" readonly value="<?php echo $_COOKIE['variable'];?>  "
@@ -87,19 +87,19 @@ require "conexion.php";
                                     <div class="form-group col-4">
                                         <input class="form-check-input" type="radio" name="radioFoto" id="radioFoto2"
                                             value="2">
-                                        <label class="form-check-label h6 mr-2" for="radioFoto1">
+                                        <label class="form-check-label h6 mr-2" for="radioFoto2">
                                             2- <i class="material-icons">&#xe3b6;</i>
                                         </label>
                                     </div>
                                     <div class="form-group col-4">
-                                        <input class="form-check-input" type="radio" name="radioFoto" id="radioFoto2"
+                                        <input class="form-check-input" type="radio" name="radioFoto" id="radioFoto3"
                                             value="3">
-                                        <label class="form-check-label h6" for="radioFoto1">
+                                        <label class="form-check-label h6" for="radioFoto3">
                                             3- <i class="material-icons">&#xe3b6;</i>
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary m-b">guardar</button>
+                                <input type="submit" class="btn btn-primary m-b"></input>
                             </form>
 
 
@@ -118,7 +118,7 @@ require "conexion.php";
               
                $op=$_COOKIE['variable'];
               
-               $queryI="SELECT  foto_nombre,foto_posicion FROM tabla_fotos where foto_op = '$op'order by foto_posicion";
+               $queryI="SELECT  `foto_nombre`,`foto_posicion` FROM `tabla_fotos` where `foto_op` = '$op'order by `foto_posicion`";
                $consultaI=mysqli_query($conexion,$queryI);               
                while ($row = mysqli_fetch_array($consultaI, MYSQLI_ASSOC)) {
                 

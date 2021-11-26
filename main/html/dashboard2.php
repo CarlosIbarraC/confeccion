@@ -73,16 +73,7 @@ $usuario=$_SESSION['usernameS1'];
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
-  <!--  <script type="text/javascript">
-   
-    window.addEventListener("beforeunload", function (e) {
-      cerrarLogin();
-      (e || window.event).returnValue = null;
-      return null;
-    });
-    
-
-    </script> -->
+ 
 </head>
 
 <body>
@@ -94,7 +85,7 @@ $usuario=$_SESSION['usernameS1'];
 
     <!-- ############ PAGE START-->
     <div class="p-a white lt box-shadow">
-
+  
       <div class="row">
         <div class="col-5">
           <div class="row">
@@ -129,24 +120,35 @@ $usuario=$_SESSION['usernameS1'];
         </div>
       </div>
     </div>
-
+   <div>
+     <h2 class="text-center p-a   display-5 m-0 " id="avisoCerrado<?php echo $n; ?>"></h2>
+   </div>
 
 
     <div class="padding">
-      <div class="box p-a m-t">
+      <div class="box p-a">
         <div class="row">
-          <div class="clear col-2">
+          <div class="clear col-sm-2 col-3">
             <h4 class="m-0 text-xs _300">Unidades<br><span class="text-xs">Primera</span></h4>
             <small class="text-muted">revisadas</small>
           </div>
-          <div class="h3 col-4 center">
+          <div class="h3 col-3 col-sm-2 center">
             <h2 id="suma<?php echo $n ?>" class="text-info">--</h2>
           </div>
-          <div class="clear col-2">
+          <div class="clear col-sm-2 col-3">
+            <h4 class="m-0 text-xs _300">Contador<br><span class="text-xs">SAM</span></h4>
+            
+          </div>
+          <div class="h2 col-sm-2 col-3 center crono_wrapper">
+        
+            <h2 id="crono<?php echo $n ?>" class="text-info text-md">00:00:00</h2>
+            <h6 id="start<?php echo $n ?>">pausa</h6>
+          </div>
+          <div class="clear col-sm-2 col-3">
             <h4 class="m-0 text-xs _300">Unidades-N.C</h4>
             <small class="text-muted">revisadas</small>
           </div>
-          <div class="h3 col-4 center">
+          <div class="h3 col-sm-2 col-3 center">
             <h2 id="sumaNC<?php echo $n ?>" class="text-danger">--</h2>
           </div>
         </div>
@@ -354,26 +356,29 @@ $usuario=$_SESSION['usernameS1'];
         </div>
         <!-- ----------------------------FIN TERCERA hilera ---------------------- -->
         <div class="col-12">
-          <div class="row box p-a">
+          <div class="row box p-a ">
 
 
-            <div class="col-4 col-sm-2">
-              <button class=" mr-1 btn  green-400">start</button>
+            <div class="col-4 col-sm-1 d-flex">
+              <button class=" mr-1 btn btn-md  green-400" id="pausar<?php echo $n ?>"><span id="end<?php echo $n ?>">Start</span> </button>
             </div>
-            <div class="col-4 col-sm-2">
-              <button class="mr-1 btn  pink-400"onclick="TelaImperfecta()">RTA</button>
+            <div class="col-4 col-sm-1 pl-2 d-flex">
+              <button class=" mr-1 btn btn-sm yellow-400" id="detener<?php echo $n ?>">Pausa</button>
             </div>
-            <div class="col-4 col-sm-2">
+            <div class="col-4 col-sm-2 justify-content-center d-flex">
+              <button class="mr-1 btn  pink-400"id="TelaImp<?php echo $n ?>">RTA</button>
+            </div>
+            <div class="col-4 col-sm-2 d-flex justify-content-center">
               <button class="btn  cyan-600"onclick="SinConfeccion()">S.C.</button>
             </div>
-            <div class="col-4 col-sm-2 mt-3 mt-sm-0">
-              <button class="mr-1 btn  deep-purple-300" onclick="Segundas()">2.da.</button>
+            <div class="col-4 col-sm-2 mt-3 mt-sm-0 d-flex justify-content-center">
+              <button class="mr-1 btn  deep-purple-300" id="Segun<?php echo $n ?>" >2.da.</button>
             </div>
-            <div class="col-4 col-sm-2 mt-3 mt-sm-0">
-              <button class="mr-1 btn  purple-300" onclick="noComforme(); ">N.C.</button>
+            <div class="col-4 col-sm-2 mt-3 mt-sm-0 d-flex justify-content-center">
+              <button class="mr-1 btn  purple-300" id="NoConf<?php echo $n ?>" >N.C.</button>
             </div>
-            <div class="col-4 col-sm-2 mt-3 mt-sm-0">
-              <button class="btn  green-300" type="a" id="lanzar_alerta" onclick="ing(); "><i
+            <div class="col-4 col-sm-2 mt-3 mt-sm-0 d-flex justify-content-center">
+              <button class="btn  green-300" type="a" id="lanzar<?php echo $n ?>" ><i
                   class="material-icons ">&#xe87c;</i> OK</button>
                   
             </div>
@@ -387,178 +392,306 @@ $usuario=$_SESSION['usernameS1'];
       </div>
       <!-- ----------------------------FIN TERCERA hilera ---------------------- -->
 
-      <!-- ----------------------------CUARTA hilera ---------------------- -->
 
-      <!--  ----------fin barras y tabla------------------ -->
-
-      <!-- //sincronizacion -->
+     
 
       <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-      <script>
-        $(document).ready(function () {
-          var usuario="<?php echo $supervisor ?>"
-          agregarOP(usuario);
-          fechaHoy();
-          setTimeout(() => {
-            insertarDatosOp();
-            avance();
-              }, 500);
-           /* setTimeout(() => {
-           
-            avance();
-              }, 600);  */  
-         
-        });
-        function avance(unidades) {          
-           
-           var totales= $("#Unidades<?php echo $n ?>").text();
-           unidades=parseInt(unidades);
-           totales=parseInt(totales);
-           var avanceUnidades=Math.trunc(unidades/totales*100);
-           var avanceU= $("#avance").css("width", avanceUnidades);
-           var avanceEtiqueta = $("#avance").text(avanceUnidades+"%");
-            console.log(avanceUnidades);
-          }
 
-        function insertarDatosOp() {
-         
-         var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
-         $.ajax({
-             method: "POST",
-             url: "insertarDatosOp.php",
-             data: {
-               numeroOp: numeroOp
-             }
-           })
-           .done(function (msg) {
-              
-              var unidadesPrimera=msg['0'].acumulado_op;
-              var UnidadesNC=msg['0'].noConforme;
-              var telaImperfecta=msg['0'].rotas;
-              var sinConfeccion=msg['0'].SinConfeccion;
-              var segunda=msg['0'].segundas;
-              $('#suma'+<?php echo $n; ?>).text(unidadesPrimera);
-              $('#sumaNC'+<?php echo $n; ?>).text(UnidadesNC);
-              $('#telaImperfecta'+<?php echo $n; ?>).text(telaImperfecta);
-              $('#sinConfeccion'+<?php echo $n; ?>).text(sinConfeccion);
-              $('#Segunda'+<?php echo $n; ?>).text(segunda);
-              avance(unidadesPrimera);         
-              
-           });
-
-       }
-
-        function Segundas() {
-         
-         var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
-         $.ajax({
-             method: "POST",
-             url: "insertarSD.php",
-             data: {
-               numeroOp: numeroOp
-             }
-           })
-           .done(function (msg) {
-
-             txt = document.getElementById("Segunda<?php echo $n; ?>");
-             console.log(txt.innerHTML = msg);
-
-           });
-
-       }
-
-
-        function SinConfeccion() {
-         
-         var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
-         $.ajax({
-             method: "POST",
-             url: "insertarSC.php",
-             data: {
-               numeroOp: numeroOp
-             }
-           })
-           .done(function (msg) {
-
-             txt = document.getElementById("sinConfeccion<?php echo $n; ?>");
-             console.log(txt.innerHTML = msg);
-
-           });
-
-       }
-
-       
-
-
-
-        function noComforme() {
-         
-          var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
-          $.ajax({
-              method: "POST",
-              url: "insertarNC.php",
-              data: {
-                numeroOp: numeroOp
-              }
-            })
-            .done(function (msg) {
-
-              txt = document.getElementById("sumaNC<?php echo $n; ?>");
-              console.log(txt.innerHTML = msg);
-
-            });
-
-        }
-
-        function ing() {
+        <script>
+          $(document).ready(function () {
+            var usuario="<?php echo $supervisor ?>";
+            $('#avisoCerrado'+<?php echo $n; ?>).removeClass('lime-300');
+            agregarOP(usuario);
+            fechaHoy();
+              setTimeout(() => {
+                insertarDatosOp();
           
-          var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
-          $.ajax({
-              method: "POST",
-              url: "insertarValoresOK.php",
-              data: {
-                numeroOp: numeroOp
-              }
-            })
-            .done(function (msg) {
+                }, 500);
 
-              txt = document.getElementById("suma<?php echo $n; ?>");
-              console.log(txt.innerHTML = msg);
-              avance(parseInt(msg));
-            });
+               
+              
+                $('#lanzar'+<?php echo $n; ?>).click(function () {
+                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                    empezarDetener(this);
+                     ing();
+                  }else{
+                    alert('la OP ha sido cerrada');
+                  }
+               
+                });
+          
+                $('#NoConf'+<?php echo $n; ?>).click(function () {
+                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                    empezarDetener(this);
+                    noComforme();
+                  }else{
+                    alert('la OP ha sido cerrada');
+                  }                 
+                  
+                  });
 
-        }
-        function TelaImperfecta() {
+                $('#Segun'+<?php echo $n; ?>).click(function () {
+                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                    empezarDetener(this);
+                    Segundas();
+                  }else{
+                    alert('la OP ha sido cerrada');
+                  }
+               
+               
+                });
+          
+                $('#TelaImp'+<?php echo $n; ?>).click(function () {
+                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                    empezarDetener(this);
+                    TelaImperfecta();
+                  }else{
+                    alert('la OP ha sido cerrada');
+                  }
+               
+                
+                });
+
+                $('#detener'+<?php echo $n ?>).click(function () {
+                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                    empezarDetener(this);
+                    $('#avisoCerrado'+<?php echo $n; ?>).text('Estamos en Pausa');
+                   
+                   
+                    
+                      if($('#detener'+<?php echo $n; ?>).text()=='Pausa'){
+                        $('#avisoCerrado'+<?php echo $n; ?>).addClass('lime-300');
+                        $('#detener'+<?php echo $n; ?>).text('Pausa Activa');
+                      }else{
+                        $('#detener'+<?php echo $n; ?>).text('Pausa');
+                        $('#avisoCerrado'+<?php echo $n; ?>).removeClass('lime-300');
+                        $('#avisoCerrado'+<?php echo $n; ?>).text('');
+                      }
+
+
+                  }else{
+                    alert('la OP ha sido cerrada');
+                  }
+               
+                
+                });
+
+                $('#pausar'+<?php echo $n; ?>).click(function () {
+
+                  var letrero = $('#end'+<?php echo $n; ?>).text(); 
+                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {                
+
+                  if(letrero=="activo"){
+                    var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
+                    $('#end'+<?php echo $n; ?>).text('cerrado');
+                    $('#avisoCerrado'+<?php echo $n; ?>).text('Esta O.P. ha sido Cerrada');
+                    $('#avisoCerrado'+<?php echo $n; ?>).addClass('orange-500');
+                    empezarDetener(this);
+                    var estado="cerrado" ;
+                    $.ajax({
+                      method: "POST",
+                      url: "estadoOp.php",
+                      data: {
+                        estado: estado,
+                        numeroOp:numeroOp
+                      }
+                       })
+                       .done(function (msg) {
+                              console.log(msg);
+                      });
+
+
+                  }else{
+                   
+                    $('#end'+<?php echo $n; ?>).text('activo'); 
+                    $('#avisoCerrado'+<?php echo $n; ?>).text(' O.P. activa');
+                    $('#avisoCerrado'+<?php echo $n; ?>).addClass('green-300');
+                    empezarDetener(this);
+                   
+                  }
+                  }else{
+                    alert('la OP ha sido cerrada');
+                }
+                   
+                });
+               
+          });
+          function avance(unidades) {
+          
+             var totales= $("#Unidades<?php echo $n ?>").text();
+             unidades=parseInt(unidades);
+             totales=parseInt(totales);
+             var avanceUnidades=Math.trunc(unidades/totales*100);
+             var avanceU= $("#avance").css("width", avanceUnidades);
+             var avanceEtiqueta = $("#avance").text(avanceUnidades+"%");
+              console.log(avanceUnidades);
+            }
+          function insertarDatosOp() {
+          
+           var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
+           $.ajax({
+               method: "POST",
+               url: "insertarDatosOp.php",
+               data: {
+                 numeroOp: numeroOp
+               }
+             })
+             .done(function (msg) {
+          
+                var unidadesPrimera=msg['0'].acumulado_op;
+                var UnidadesNC=msg['0'].noConforme;
+                var telaImperfecta=msg['0'].rotas;
+                var sinConfeccion=msg['0'].SinConfeccion;
+                var segunda=msg['0'].segundas;
+                $('#suma'+<?php echo $n; ?>).text(unidadesPrimera);
+                $('#sumaNC'+<?php echo $n; ?>).text(UnidadesNC);
+                $('#telaImperfecta'+<?php echo $n; ?>).text(telaImperfecta);
+                $('#sinConfeccion'+<?php echo $n; ?>).text(sinConfeccion);
+                $('#Segunda'+<?php echo $n; ?>).text(segunda);
+                avance(unidadesPrimera);
+          
+             });
+          
+                 }
+          function Segundas() {
          
-         var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
-         $.ajax({
-             method: "POST",
-             url: "insertarTI.php",
-             data: {
-               numeroOp: numeroOp
-             }
-           })
-           .done(function (msg) {
-
-             txt = document.getElementById("telaImperfecta<?php echo $n; ?>");
-             console.log(txt.innerHTML = msg);
+           var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
+           $.ajax({
+               method: "POST",
+               url: "insertarSD.php",
+               data: {
+                 numeroOp: numeroOp
+               }
+             })
+             .done(function (msg) {
+               txt = document.getElementById("Segunda<?php echo $n; ?>");
+               console.log(txt.innerHTML = msg);
+             });
+          
+                 }
+          function SinConfeccion() {
+          
+           var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
+           $.ajax({
+               method: "POST",
+               url: "insertarSC.php",
+               data: {
+                 numeroOp: numeroOp
+               }
+             })
+             .done(function (msg) {
+               txt = document.getElementById("sinConfeccion<?php echo $n; ?>");
+               console.log(txt.innerHTML = msg);
+             });
+          
+                 }
+          function noComforme() {
+          
+            var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
+            $.ajax({
+                method: "POST",
+                url: "insertarNC.php",
+                data: {
+                  numeroOp: numeroOp
+                }
+              })
+              .done(function (msg) {
+                txt = document.getElementById("sumaNC<?php echo $n; ?>");
+                console.log(txt.innerHTML = msg);
+              });
+          }
+          function ing() {
+          
+            var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
+            var Prueba="casa";
+            $.ajax({
+                method: "POST",
+                url: "insertarValoresOK.php",
+                data: {
+                  numeroOp: numeroOp,
+                  casa:Prueba
+                }
+              })
+              .done(function (msg) {
+                txt = document.getElementById("suma<?php echo $n; ?>");
+                console.log(txt.innerHTML = msg);
+                avance(parseInt(msg));
+              });
+          }
+          function TelaImperfecta() {
+          
+           var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
+           $.ajax({
+               method: "POST",
+               url: "insertarTI.php",
+               data: {
+                 numeroOp: numeroOp
+               }
+             })
+             .done(function (msg) {
+               txt = document.getElementById("telaImperfecta<?php echo $n; ?>");
+               console.log(txt.innerHTML = msg);
+          
+             });
+          
+                 }
+                 function fechaHoy() {
+          var fecha =new Date();
+          
+          $('#fechaHoy').text(fecha.getDate()+'/'+(fecha.getMonth()+1)+'/'+(fecha.getFullYear()));
+                 }
+              
+             
+          
+          
+            var inicio=0;
+            var timeout=0;
+            var contador=0;
+          
             
-
-           });
-
-       }
-       function fechaHoy() {
-        var fecha =new Date();
            
-        $('#fechaHoy').text(fecha.getDate()+'/'+(fecha.getMonth()+1)+'/'+(fecha.getFullYear()));
-       }
-      </script>
+            function empezarDetener(elemento)
+            {
+             
+              
+          
+              if(timeout==0)
+              {
+                elemento.value="Detener";
+                
+                inicio=vuelta=new Date().getTime();		
+                funcionando();
+              }else{
+                elemento.value="Empezar";               
+                console.log(contador);
+                timeout=0;
+                clearTimeout(timeout);
+                inicio=vuelta=new Date().getTime();
+              }
+            }
+           
+            function funcionando()	{
+              
+              var actual = new Date().getTime();	
+              var diff=new Date(actual-inicio);		
+              var result=LeadingZero(diff.getUTCHours())+":"+LeadingZero(diff.getUTCMinutes())+":"+LeadingZero(diff.getUTCSeconds());
+               contador=diff.getUTCHours()*3600+diff.getUTCMinutes()*60+diff.getUTCSeconds();
+              $('#crono'+<?php echo $n; ?>).text(result);        
+              if( $('#end'+<?php echo $n; ?>).text()!='cerrado'){
+                timeout=setTimeout("funcionando()",1000);
+              }
+              
+            }
+           
+            
+            function LeadingZero(Time) {
+              return (Time < 10) ? "0" + Time : + Time;
+            }
+        </script>
 
-      <!-- ----------------------------FIN CUARTA hilera ---------------------- -->
-
-
-      <!-- ############ PAGE END-->
-
+  
+ 
+     
 
       <!-- jQuery -->
       <script src="../libs/jquery/jquery/dist/jquery.js"></script>

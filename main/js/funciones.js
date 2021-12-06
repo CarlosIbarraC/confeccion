@@ -50,7 +50,7 @@ function  fechaControl(){
           data: { supervisor: supervisor}
         })
           .done(function( msg ) {
-              console.log(msg);
+             
               var tableroOP=msg['0'].op_num;             
               var referencia=msg['0'].referencia_op;
               var unidades=msg['0'].unidades_op;

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+require "conexion.php";
 error_reporting(E_ALL ^ E_NOTICE);
 $usuario=$_SESSION['usernameS1'];
   switch ($usuario) {
@@ -73,7 +74,7 @@ $usuario=$_SESSION['usernameS1'];
   <link rel="stylesheet" href="../assets/styles/app.css" type="text/css" />
   <!-- endbuild -->
   <link rel="stylesheet" href="../assets/styles/font.css" type="text/css" />
- 
+  <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
 </head>
 
 <body>
@@ -141,8 +142,8 @@ $usuario=$_SESSION['usernameS1'];
           </div>
           <div class="h2 col-sm-2 col-3 center crono_wrapper">
         
-            <h2 id="crono<?php echo $n ?>" class="text-info text-md">00:00:00</h2>
-            <h6 id="start<?php echo $n ?>">pausa</h6>
+            <h2 id="crono<?php echo $n ?>" class="text-info ">00:00:00</h2>
+            
           </div>
           <div class="clear col-sm-2 col-3">
             <h4 class="m-0 text-xs _300">Unidades-N.C</h4>
@@ -265,11 +266,13 @@ $usuario=$_SESSION['usernameS1'];
                 <div class="box p-1 ">
                   <label for="">Avance</label>
                   <div class="progress mb-2">
-                    <div class="progress-bar primary " id="avance" style="width: 20%">25%</div>
+                    
+                    <div class="progress-bar green-300 " id="avance" style="width:20%">25%</div>
                   </div>
                   <label for="">Eficiencia</label>
                   <div class="progress mb-2">
-                    <div class="progress-bar info" style="width: 45%">45%</div>
+                    <div class="progress-bar info " style="width: 45%">45%</div>
+                    
                   </div>
                   <label for="">Producto no Conforme</label>
                   <div class="progress ">
@@ -360,7 +363,7 @@ $usuario=$_SESSION['usernameS1'];
 
 
             <div class="col-4 col-sm-1 d-flex">
-              <button class=" mr-1 btn btn-md  green-400" id="pausar<?php echo $n ?>"><span id="end<?php echo $n ?>">Start</span> </button>
+              <button class=" mr-1 btn btn-md  green-400" id="pausar<?php echo $n ?>"><span id="end<?php echo $n ?>">Start</span></button>
             </div>
             <div class="col-4 col-sm-1 pl-2 d-flex">
               <button class=" mr-1 btn btn-sm yellow-400" id="detener<?php echo $n ?>">Pausa</button>
@@ -369,7 +372,7 @@ $usuario=$_SESSION['usernameS1'];
               <button class="mr-1 btn  pink-400"id="TelaImp<?php echo $n ?>">RTA</button>
             </div>
             <div class="col-4 col-sm-2 d-flex justify-content-center">
-              <button class="btn  cyan-600"onclick="SinConfeccion()">S.C.</button>
+              <button class="btn  cyan-600"id="sinConf<?php echo $n ?>">S.C.</button>
             </div>
             <div class="col-4 col-sm-2 mt-3 mt-sm-0 d-flex justify-content-center">
               <button class="mr-1 btn  deep-purple-300" id="Segun<?php echo $n ?>" >2.da.</button>
@@ -403,27 +406,41 @@ $usuario=$_SESSION['usernameS1'];
             $('#avisoCerrado'+<?php echo $n; ?>).removeClass('lime-300');
             agregarOP(usuario);
             fechaHoy();
+          
               setTimeout(() => {
                 insertarDatosOp();
-          
-                }, 500);
+                
+           
+                }, 200);
 
-               
-              
-                $('#lanzar'+<?php echo $n; ?>).click(function () {
-                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
-                    empezarDetener(this);
-                     ing();
+                var prueba=$('#end'+<?php echo $n;?>).text();
+
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxx                                      funciones de conteo                                xxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+                
+                $('#lanzar'+<?php echo $n; ?>).click(function () {                 
+                 
+                  if($('#end'+<?php echo $n;?>).text()== 'activo') {
+                    cronos(this);
+                    empezarDetener(this);                    
+                    ing();
+                    
+                  }else if($('#end'+<?php echo $n;?>).text()=='Start'){
+                    alert('la OP no esta activa');
                   }else{
                     alert('la OP ha sido cerrada');
                   }
                
                 });
+                
           
                 $('#NoConf'+<?php echo $n; ?>).click(function () {
-                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                  if( $('#end'+<?php echo $n; ?>).text()=='activo') {
                     empezarDetener(this);
                     noComforme();
+                  }else if($('#end'+<?php echo $n; ?>).text()=='Start'){
+                    alert('la OP no esta activa');
                   }else{
                     alert('la OP ha sido cerrada');
                   }                 
@@ -431,9 +448,11 @@ $usuario=$_SESSION['usernameS1'];
                   });
 
                 $('#Segun'+<?php echo $n; ?>).click(function () {
-                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                  if( $('#end'+<?php echo $n; ?>).text()=='activo') {
                     empezarDetener(this);
                     Segundas();
+                  }else if($('#end'+<?php echo $n; ?>).text()=='Start'){
+                    alert('la OP no esta activa');
                   }else{
                     alert('la OP ha sido cerrada');
                   }
@@ -442,9 +461,11 @@ $usuario=$_SESSION['usernameS1'];
                 });
           
                 $('#TelaImp'+<?php echo $n; ?>).click(function () {
-                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                  if( $('#end'+<?php echo $n; ?>).text()=='activo') {
                     empezarDetener(this);
                     TelaImperfecta();
+                  }else if($('#end'+<?php echo $n; ?>).text()=='Start'){
+                    alert('la OP no esta activa');
                   }else{
                     alert('la OP ha sido cerrada');
                   }
@@ -452,79 +473,108 @@ $usuario=$_SESSION['usernameS1'];
                 
                 });
 
+                $('#sinConf'+<?php echo $n; ?>).click(function () {
+                  if( $('#end'+<?php echo $n; ?>).text()=='activo') {
+                   
+                    SinConfeccion();
+                  }else if($('#end'+<?php echo $n; ?>).text()=='Start'){
+                    alert('la OP no esta activa');
+                  }else{
+                    alert('la OP ha sido cerrada');
+                  }
+               
+                
+                });
+               
                 $('#detener'+<?php echo $n ?>).click(function () {
-                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {
+                  /* var prueba=$('#end'+<?php echo $n;?>).text();
+                  console.log(prueba); */
+                  if(prueba =="activo") {
                     empezarDetener(this);
                     $('#avisoCerrado'+<?php echo $n; ?>).text('Estamos en Pausa');
-                   
-                   
-                    
-                      if($('#detener'+<?php echo $n; ?>).text()=='Pausa'){
+
+                      if($('#detener'+<?php echo $n; ?>).text()=="Pausa"){
                         $('#avisoCerrado'+<?php echo $n; ?>).addClass('lime-300');
                         $('#detener'+<?php echo $n; ?>).text('Pausa Activa');
                       }else{
-                        $('#detener'+<?php echo $n; ?>).text('Pausa');
                         $('#avisoCerrado'+<?php echo $n; ?>).removeClass('lime-300');
-                        $('#avisoCerrado'+<?php echo $n; ?>).text('');
+                        $('#detener'+<?php echo $n; ?>).text('Pausa');
+                        activo();
                       }
 
-
-                  }else{
-                    alert('la OP ha sido cerrada');
-                  }
-               
+                  }else if(prueba=="cerrado"){                   
+                    console.log(prueba);
+                    alert('la OP ha sido cerrada vvv',prueba);
+                  }              
                 
                 });
 
-                $('#pausar'+<?php echo $n; ?>).click(function () {
-
-                  var letrero = $('#end'+<?php echo $n; ?>).text(); 
-                  if( $('#end'+<?php echo $n; ?>).text()!='cerrado') {                
-
-                  if(letrero=="activo"){
-                    var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
-                    $('#end'+<?php echo $n; ?>).text('cerrado');
-                    $('#avisoCerrado'+<?php echo $n; ?>).text('Esta O.P. ha sido Cerrada');
-                    $('#avisoCerrado'+<?php echo $n; ?>).addClass('orange-500');
-                    empezarDetener(this);
-                    var estado="cerrado" ;
-                    $.ajax({
-                      method: "POST",
-                      url: "estadoOp.php",
-                      data: {
-                        estado: estado,
-                        numeroOp:numeroOp
-                      }
-                       })
-                       .done(function (msg) {
-                              console.log(msg);
-                      });
-
-
-                  }else{
-                   
-                    $('#end'+<?php echo $n; ?>).text('activo'); 
-                    $('#avisoCerrado'+<?php echo $n; ?>).text(' O.P. activa');
-                    $('#avisoCerrado'+<?php echo $n; ?>).addClass('green-300');
-                    empezarDetener(this);
-                   
-                  }
-                  }else{
-                    alert('la OP ha sido cerrada');
-                }
-                   
-                });
+/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxx                                       Estado                                  xxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
                
+               
+                $('#pausar'+<?php echo $n; ?>).click(function () {
+                 
+                   
+                   var comprobarEstado=$('#end'+<?php echo $n; ?>).text();
+                   var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
+                   var estad=$('#end'+<?php echo $n; ?>).text();
+                 if(comprobarEstado=="Start"){ 
+                  comprobacionEstado();               
+                  activo();   
+                  var estad='activo';
+                  guardarEstado(numeroOp,estad);
+                 }else if  (estad=="activo"){                 
+                 
+                  if( confirmar()==true){
+                    estad="cerrado";
+                    cerrado();                   
+                    guardarEstado(numeroOp,estad);   
+                  }
+                                
+                 }else if(estad=="cerrado"){
+
+                  guardarEstado(numeroOp,estad);
+                  cerrado(); 
+                 }
+
+                });               
           });
-          function avance(unidades) {
+          
+         function confirmar() {
+          var conf= confirm("esta Seguro que desea Cerrar");
+           if(conf==true){
+             return true;
+           }else{
+             return false;
+           }
+         }
+
+          function activo() {
+            empezarDetener(this); 
+            $('#end'+<?php echo $n; ?>).text('activo');                      
+            $('#avisoCerrado'+<?php echo $n; ?>).text('O.P activa'); 
+            $('#avisoCerrado'+<?php echo $n; ?>).addClass('indigo-500');
+          }
+          function cerrado() {
+            $('#end'+<?php echo $n; ?>).text('cerrado');                      
+            $('#avisoCerrado'+<?php echo $n; ?>).text('O.P cerrada');
+            $('#avisoCerrado'+<?php echo $n; ?>).addClass('lime-400');
+          }
+          
+          function avance() {
           
              var totales= $("#Unidades<?php echo $n ?>").text();
-             unidades=parseInt(unidades);
-             totales=parseInt(totales);
+             var ok=  $("#suma<?php echo $n ?>").text();
+             var telaImp= $('#telaImperfecta'+<?php echo $n; ?>).text();
+             var segundas=$('#Segunda'+<?php echo $n; ?>).text();
+             var unidades=parseInt(ok)+parseInt(telaImp)+parseInt(segundas);
+             var totales=parseInt(totales);
              var avanceUnidades=Math.trunc(unidades/totales*100);
-             var avanceU= $("#avance").css("width", avanceUnidades);
+             var avanceU= $("#avance").css("width",avanceUnidades+"%");
              var avanceEtiqueta = $("#avance").text(avanceUnidades+"%");
-              console.log(avanceUnidades);
+             
             }
           function insertarDatosOp() {
           
@@ -543,12 +593,22 @@ $usuario=$_SESSION['usernameS1'];
                 var telaImperfecta=msg['0'].rotas;
                 var sinConfeccion=msg['0'].SinConfeccion;
                 var segunda=msg['0'].segundas;
+                var estado=msg['0'].estado;
                 $('#suma'+<?php echo $n; ?>).text(unidadesPrimera);
                 $('#sumaNC'+<?php echo $n; ?>).text(UnidadesNC);
                 $('#telaImperfecta'+<?php echo $n; ?>).text(telaImperfecta);
                 $('#sinConfeccion'+<?php echo $n; ?>).text(sinConfeccion);
                 $('#Segunda'+<?php echo $n; ?>).text(segunda);
-                avance(unidadesPrimera);
+                console.log(segunda,numeroOp);
+                if(estado=='activo'){
+                  activo();
+                  
+                }
+                if(estado=='cerrado'){
+                  cerrado();
+                  
+                }
+                avance();
           
              });
           
@@ -565,7 +625,10 @@ $usuario=$_SESSION['usernameS1'];
              })
              .done(function (msg) {
                txt = document.getElementById("Segunda<?php echo $n; ?>");
-               console.log(txt.innerHTML = msg);
+               txt.innerHTML =msg;
+               
+               avance();
+               
              });
           
                  }
@@ -581,7 +644,7 @@ $usuario=$_SESSION['usernameS1'];
              })
              .done(function (msg) {
                txt = document.getElementById("sinConfeccion<?php echo $n; ?>");
-               console.log(txt.innerHTML = msg);
+               txt.innerHTML = msg;
              });
           
                  }
@@ -600,22 +663,23 @@ $usuario=$_SESSION['usernameS1'];
                 console.log(txt.innerHTML = msg);
               });
           }
+          
           function ing() {
           
             var numeroOp = $('#tablero<?php echo $n; ?>-OP').text();
-            var Prueba="casa";
+           
             $.ajax({
                 method: "POST",
                 url: "insertarValoresOK.php",
                 data: {
-                  numeroOp: numeroOp,
-                  casa:Prueba
+                  numeroOp: numeroOp
+                 
                 }
               })
               .done(function (msg) {
-                txt = document.getElementById("suma<?php echo $n; ?>");
+                txt = document.getElementById("suma<?php echo $n;?>");
                 console.log(txt.innerHTML = msg);
-                avance(parseInt(msg));
+                avance();
               });
           }
           function TelaImperfecta() {
@@ -631,7 +695,7 @@ $usuario=$_SESSION['usernameS1'];
              .done(function (msg) {
                txt = document.getElementById("telaImperfecta<?php echo $n; ?>");
                console.log(txt.innerHTML = msg);
-          
+               avance();
              });
           
                  }
@@ -639,10 +703,7 @@ $usuario=$_SESSION['usernameS1'];
           var fecha =new Date();
           
           $('#fechaHoy').text(fecha.getDate()+'/'+(fecha.getMonth()+1)+'/'+(fecha.getFullYear()));
-                 }
-              
-             
-          
+                 }          
           
             var inicio=0;
             var timeout=0;
@@ -653,7 +714,9 @@ $usuario=$_SESSION['usernameS1'];
             function empezarDetener(elemento)
             {
              
-              
+              if(elemento.id=='lanzar<?php echo $n; ?>'){
+                console.log("logros");
+              }
           
               if(timeout==0)
               {
@@ -687,7 +750,77 @@ $usuario=$_SESSION['usernameS1'];
             function LeadingZero(Time) {
               return (Time < 10) ? "0" + Time : + Time;
             }
-        </script>
+            var mensaje;
+
+            /* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxx                            Comprobar           Estado                                  xxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */
+            function comprobacionEstado() {
+              var numeroOp = $("#tablero<?php echo $n; ?>-OP").text(); 
+              $.ajax({
+               method: "POST",
+               url: "comprobarE.php",
+               data: {
+                 numeroOp: numeroOp
+               }
+             })
+             .done(function (msg) {
+              
+              $('#end'+<?php echo $n; ?>).text(msg);;
+             
+             });
+            
+            }
+
+            function guardarEstado(numeroOp,estado) {
+               
+              $.ajax({
+               method: "POST",
+               url: "estadoOp.php",
+               data: {
+                 numeroOp: numeroOp,
+                 estado:estado
+               }
+             })
+             .done(function (msg) {
+              
+                
+              
+             });
+            }
+            function toggleFullScreen() {
+               if (!document.fullscreenElement) {
+                   document.documentElement.requestFullscreen();
+               } else {
+                 if (document.exitFullscreen) {
+                   document.exitFullscreen();
+                 }
+               }
+             }
+
+            function cronos(parametro) {
+             //var tiempo= $("#crono<?php echo $n; ?>").text();
+             var tiempo=contador;
+             var numeroOp = $("#tablero<?php echo $n; ?>-OP").text();
+            var params = parametro.id;
+            console.log(params);
+              $.ajax({
+               method: "POST",
+               url: "safeTime.php",
+               data: {
+                 numeroOp: numeroOp,
+                 params:params,
+                 tiempo:tiempo
+               }
+             })
+             .done(function (msg) {
+              
+                console.log(msg);
+              
+             });
+              
+            } 
+</script>
 
   
  
@@ -698,7 +831,7 @@ $usuario=$_SESSION['usernameS1'];
       <script src="../js/funciones.js">
         <!-- Bootstrap 
         -->
-      <script src="../libs/jquery/tether/dist/js/tether.min.js"></script>
+      
       <script src="../libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
       <!-- core -->
       <script src="../libs/jquery/underscore/underscore-min.js"></script>

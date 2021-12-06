@@ -1,7 +1,6 @@
 <?php 
 session_start();
 $usuario=$_SESSION['usernameS1'];
-$_SESSION['cas']=$_POST['casa'];
 if(!isset($usuario)){
   header("location:login.php");
 };

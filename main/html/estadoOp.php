@@ -12,11 +12,9 @@ if(!isset($_POST['estado'])){
 $estado=$_POST['estado'];
 $numeroOp=$_POST['numeroOp'];
 
+  $sql="UPDATE `datosop` SET `estado`='$estado' WHERE `op_numero`='$numeroOp'";
+  $consulta=mysqli_query($conexion,$sql);
 
+ echo true; 
 
-$sql="UPDATE `datosop` SET `estado`='$estado' WHERE `op_numero`='$numeroOp'";
-
-$consulta=mysqli_query($conexion,$sql);
-
-echo "cerrado";
 ?>
